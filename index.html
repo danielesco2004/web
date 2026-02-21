@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="referrer" content="strict-origin-when-cross-origin" />
-
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <title>Game Developer Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -19,7 +19,10 @@
             outline: none;
             font-family: 'Poppins', sans-serif;
         }
-
+:root{
+    --bg-color: #13141d;      /* nuevo fondo */
+    --main-color: #393a56;    /* nuevo color principal */
+}
         html{
             font-size: 62.5%;
         }
@@ -28,7 +31,7 @@
             width: 100%;
             height: 100vh;
             overflow-x: hidden;
-            background-color: black;
+            background-color: var(--bg-color);
             color: white;
         }
 
@@ -53,7 +56,7 @@
     width: 100%; /* ocupa todo el ancho */
     max-width: 100vw; /* aseguramos que no se recorte */
     padding: 1rem 9%; /* mantiene espacio interno */
-    background-color: rgba(0, 0, 0, 0.85); /* negro semi-transparente */
+    background-color: #31324d; /* negro semi-transparente */
     border-radius: 0; /* ya no queremos bordes redondeados */
     position: fixed; /* pegado arriba */
     top: 0; /* hasta el tope */
@@ -65,7 +68,7 @@
 
         .logo{
             font-size: 3rem;
-            color: #b74b4b;
+            color: #ffffff;
             font-weight: 800;
             cursor: pointer;
             transition: 0.5s ease;
@@ -86,8 +89,8 @@
 
         nav a:hover,
         nav a.active{
-            color: #b74b4b;
-            border-bottom: 3px solid #b74b4b;
+            color: var(--main-color);
+            border-bottom: 3px solid var(--main-color);
         }
 
         @media(max-width:995px){
@@ -97,8 +100,8 @@
                 top: 0;
                 right: 0;
                 width: 40%;
-                border-left: 3px solid #b74b4b;
-                border-bottom: 3px solid #b74b4b;
+                border-left: 3px solid var(--main-color);
+                border-bottom: 3px solid var(--main-color);
                 border-bottom-left-radius: 2rem;
                 padding: 1rem solid;
                 background-color: #161616;
@@ -119,14 +122,16 @@
             nav a.active{
                 padding: 1rem;
                 border-radius: 0.5rem;
-                border-bottom: 0.5rem solid #b74b4b;
+                border-bottom: 0.5rem solid var(--main-color);
             }
         }
 
 section{
     min-height: 100vh;
     padding: 5rem 9% 5rem;
-    background-color: rgba(0, 0, 0, 1); /* fondo negro semitransparente */
+    
+    background: transparent; /* importante */
+
 }
 
         .home{
@@ -134,7 +139,8 @@ section{
             justify-content: center;
             align-items: center;
             gap: 8rem;
-            background-color: black;
+                background: transparent;
+
         }
 
         .home .home-content h1{
@@ -144,7 +150,7 @@ section{
         }
 
         span{
-            color: #b74b4b;
+            color: var(--main-color);
         }
 
         .home-content h3{
@@ -165,7 +171,7 @@ section{
             position: relative;
             width: 16vw;
             border-radius: 50%;
-            box-shadow: 0 0 25px solid #b74b4b;
+            box-shadow: 0 0 25px solid var(--main-color);
             cursor: pointer;
             transition: 0.2s linear;
         }
@@ -182,40 +188,46 @@ section{
             width: 4rem;
             height: 4rem;
             background-color: transparent;
-            border: 0.2rem solid #b74b4b;
+            border: 0.2rem solid var(--main-color);
             font-size: 2rem;
             border-radius: 50%;
             margin: 3rem 1.5rem 3rem 0;
             transition: 0.3s ease;
-            color: #b74b4b;
+            color: var(--main-color);
+
+    box-shadow:
+        0 0 8px var(--main-color),
+        0 0 18px var(--main-color),
+        0 0 30px rgba(57, 58, 86, 0.6);
+
         }
 
         .social-icons a:hover{
-            color: black;
+            color: var(--bg-color);
             transform: scale(1.3) translateY(-5px);
-            background-color: #b74b4b;
-            box-shadow: 0  0 25px #b74b4b;
+            background-color: var(--main-color);
+            box-shadow: 0  0 25px var(--main-color);
         }
 
         .btn{
             display: inline-block;
             padding: 1rem 2.8rem;
-            background-color: black;
+            background-color: var(--bg-color);
             border-radius: 4rem;
             font-size: 1.6rem;
-            color: #b74b4b;
+            color: var(--main-color);
             letter-spacing: 0.3rem;
             font-weight: 600;
-            border: 2px solid #b74b4b;
+            border: 2px solid var(--main-color);
             transition: 0.3s ease;
             cursor: pointer;
         }
 
         .btn:hover{
             transform: scale3d(1.03);
-            background-color: #b74b4b;
-            color: black;
-            box-shadow: 0 0 25px #b74b4b;
+            background-color: var(--main-color);
+            color: var(--bg-color);
+            box-shadow: 0 0 25px var(--main-color);
         }
 
         .typing-text{
@@ -230,24 +242,24 @@ section{
 
         .typing-text span::before{
             content: "Game Developer";
-            color: #b74b4b;
+            color: var(--main-color);
             animation: words 20s infinite;
         }
 
         .typing-text span::after{
             content: "";
-            background-color: black;
+            background-color: var(--bg-color);
             position: absolute;
             width: calc(100% + 8px);
             height: 100%;
-            border-left: 3px solid black;
+            border-left: 3px solid var(--bg-color);
             right: -8;
             animation: cursor 0.6s infinite;
         }
 
         @keyframes cursor{
             to{
-                border-left: 3px solid #b74b4b;
+                border-left: 3px solid var(--main-color);
             }
         }
 
@@ -296,15 +308,19 @@ section{
         }
 
         /* Additional styles for other sections */
-        .about, .projects, .prototypes, .contact {
-            background-color: #0a0a0a;
+        .about, .projects, .prototypes, .contact, .models {
+            background: #23243a;
+
             text-align: center;
         }
 
-        .about h2, .projects h2, .prototypes h2, .contact h2 {
+        .about h2, .projects h2, .prototypes h2, .contact h2, .models h2 {
             font-size: 4rem;
             margin-bottom: 2rem;
-            color: #b74b4b;
+            color: #ffffff;
+
+
+
         }
 
         .about p, .projects p, .prototypes p, .contact p {
@@ -329,7 +345,7 @@ section{
             align-items: center;
             padding: 20px;
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid #b74b4b;
+            border: 1px solid var(--main-color);
             border-radius: 12px;
             transition: 0.3s ease;
         }
@@ -345,7 +361,7 @@ section{
         }
 
         .about-grid .project-item h3 {
-            color: #b74b4b;
+            color: var(--main-color);
             font-size: 2rem;
             margin-bottom: 1rem;
             text-align: center;
@@ -361,7 +377,7 @@ section{
         /* -------------------- */
         .project-item{
             background: rgba(255, 255, 255, 0.1);
-            border: 1px solid #b74b4b;
+            border: 1px solid var(--main-color);
             border-radius: 12px;
             overflow: hidden;
             transition: 0.3s ease;
@@ -385,7 +401,7 @@ section{
 
         .project-item-link:hover .project-item {
             transform: translateY(-10px);
-            box-shadow: 0 0 25px #b74b4b;
+            box-shadow: 0 0 25px var(--main-color);
         }
 
         .project-grid {
@@ -396,7 +412,7 @@ section{
         }
 
         .project-item h3 {
-            color: #b74b4b;
+            color: var(--main-color);
             font-size: 2.5rem;
             margin-bottom: 1rem;
         }
@@ -438,23 +454,234 @@ section{
     letter-spacing: 1px;
     opacity: 0.8;
 }
+/* -------------------- */
+/* MODELS 3D SECTION */
+/* -------------------- */
 
+
+
+
+.models-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 20px;
+}
+
+.models-slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.models-slider::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 10px;
+}
+
+.model-card {
+    min-width: 250px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--main-color);
+    border-radius: 12px;
+    padding: 15px;
+    flex-shrink: 0;
+    transition: 0.3s ease;
+}
+
+.model-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px var(--main-color);
+}
+
+.model-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.model-card h3 {
+    color: var(--main-color);
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.model-card p {
+    font-size: 1.3rem;
+}
+/* -------------------- */
+/* SFX & OTHER ASSETS SECTION */
+/* -------------------- */
+
+.sfx {
+    background: #23243a;
+    text-align: center;
+}
+
+.sfx h2 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+.sfx-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 20px;
+}
+
+.sfx-slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.sfx-slider::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 10px;
+}
+
+.sfx-card {
+    min-width: 250px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--main-color);
+    border-radius: 12px;
+    padding: 15px;
+    flex-shrink: 0;
+    transition: 0.3s ease;
+}
+
+.sfx-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px var(--main-color);
+}
+
+.sfx-card img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.sfx-card h3 {
+    color: var(--main-color);
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.sfx-card p {
+    font-size: 1.3rem;
+}
+/* -------------------- */
+/* ASSETS SECTION */
+/* -------------------- */
+
+.assets {
+    background: #23243a;
+    text-align: center;
+}
+
+.assets h2 {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+    color: #ffffff;
+}
+
+.assets-slider {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    padding-bottom: 20px;
+}
+
+.assets-slider::-webkit-scrollbar {
+    height: 8px;
+}
+
+.assets-slider::-webkit-scrollbar-thumb {
+    background: var(--main-color);
+    border-radius: 10px;
+}
+
+.asset-card {
+    min-width: 250px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--main-color);
+    border-radius: 12px;
+    padding: 15px;
+    flex-shrink: 0;
+    transition: 0.3s ease;
+}
+
+.asset-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px var(--main-color);
+}
+
+.asset-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.asset-card h3 {
+    color: var(--main-color);
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+}
+
+.asset-card p {
+    font-size: 1.3rem;
+}
+.main-wrapper {
+    width: 95%;
+    max-width: 1400px;
+    margin: 120px auto 0 auto; /* agregamos espacio arriba por el header fixed */
+    background-color: #1c1d2f;
+    padding: 40px 0;
+    border-radius: 20px;
+
+box-shadow: 
+    0 0 65px rgba(0, 0, 0, 0.4);
+
+
+}
+nav a {
+    color: white !important;
+}
+.dev-glow{
+    color: #00ff88; /* verde principal */
+    text-shadow:
+        0 0 8px #00ff88;
+}
+.about-grid model-viewer{
+    max-width: 160px;
+    margin-bottom: 15px;
+}
     </style>
 </head>
 <body>
     <header>
+
     <div class="header-content">
-        <div class="logo">GameDev</div>
+        <div class="logo">Game<span class="dev-glow">Dev</span></div>
         <nav>
             <a href="#home" class="active">Home</a>
             <a href="#about">About</a>
             <a href="#projects">Projects</a>
             <a href="#prototypes">Prototypes & Solo Projects</a>
             <a href="#contact">Contact</a>
+            <a href="#models">Gallery</a>
+
         </nav>
     </div>
     </header>
-
+<div class="main-wrapper">
     <section id="home" class="home">
 
 <div class="home-img">
@@ -471,18 +698,31 @@ section{
   </iframe>
 </div>
     <p class="video-caption">Last Project</p>
-        <p class="video-caption">Time: 2-3 weeks, technical mechanics demo</p>
+    <p class="video-caption">Time: 2-3 weeks, technical mechanics demo</p>
 </div>
         <div class="home-content">
             <h3>Hello, I'm</h3>
             <h1>Daniel <span>Game Developer</span></h1>
             <p>I have been developing video games in Unity for over 5 years.</p>
 <div class="social-icons">
+    <!-- Gmail -->
     <a href="https://mail.google.com/mail/?view=cm&to=danielesco2004@gmail.com">
         <i class="fas fa-envelope"></i>
     </a>
+
+    <!-- WhatsApp -->
     <a href="https://wa.me/50250718130" target="_blank">
         <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Discord -->
+    <a href="https://discord.gg/TU_INVITACION" target="_blank">
+        <i class="fab fa-discord"></i>
+    </a>
+
+    <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/in/TU_USUARIO" target="_blank">
+        <i class="fab fa-linkedin-in"></i>
     </a>
 </div>
             <a href="#about" class="btn">More About Me</a>
@@ -500,7 +740,15 @@ section{
 
             <!-- Technical Skills -->
             <div class="project-item">
-                <img src="tech.png" alt="Technical Skills" class="edu-logo">
+<model-viewer 
+    src="model.glb"
+    auto-rotate
+    camera-controls
+    shadow-intensity="1"
+    exposure="1"
+    environment-image="neutral"
+    style="width: 100%; height: 200px; background: transparent;">
+</model-viewer>
                 <h3>Technical Skills</h3>
                 <p>Unity, C#, Photoshop, Illustrator, Visual Studio, Blender.</p>
             </div>
@@ -549,8 +797,8 @@ section{
                 <img src="Identity.png" alt="Identity V">
                 <div class="project-content">
                     <h3>Identity V</h3>
-                    <p>Is an asymmetric 1v4 mobile horror game with gothic visuals, mysterious stories, randomized maps, and multiple characters survive or hunt.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #b74b4b;">Available only on Playstore</p>
+                    <p>is an asymmetric 1v4 mobile horror game with gothic visuals, mysterious stories, randomized maps, and multiple characters survive or hunt.</p>
+                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Available only on Playstore</p>
                         <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0a0;">C# Role: Inventory mechanics, weapon prototype, character rigging and movement, options and mechanics coding, UI canvas.</p>
                         <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Freelance collaboration</p>
                 </div>
@@ -563,7 +811,7 @@ section{
                     <div class="project-content">
                         <h3>Stickman battle simulator</h3>
                         <p>A free battle simulator where players command a stickman army using melee, guns, and sci-fi weapons.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #b74b4b;">Available only on Playstore</p>
+                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Available only on Playstore</p>
                         <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0a0;">C# Role: Player coding, inventory system, weapon system, save system.</p>
                         <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Freelance collaboration</p>
                     </div>
@@ -576,7 +824,7 @@ section{
                 <div class="project-content">
                     <h3>Super Bear Adventure</h3>
                     <p>A 3D exploration game inspired by ’90s titles. Play as Baaren, a brave bear on a mission to save the kingdom from the threat of purple honey, discovering secrets, collectibles, vehicles.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #b74b4b;">Available only on Playstore</p>
+                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Available only on Playstore</p>
                         <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0a0;">C# Role: Movement development.</p>
                         <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Freelance collaboration</p>
                 </div>
@@ -596,7 +844,7 @@ section{
                 <div class="project-content">
                     <h3>Goomie Gum</h3>
                         <p>A game inspired by Stumble Guys: reach the finish line and claim the trophy!.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #b74b4b;">Available</p>
+                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Available</p>
                         <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Own work, time: 2 Months</p>
                 </div>
             </div>
@@ -608,19 +856,19 @@ section{
                 <div class="project-content">
                 <h3>Tung Tung Sahur Terror Game</h3>
                 <p>A game where you have to escape from Tung Tung Sahur in a haunted house.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #b74b4b;">Availablee</p>
+                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Availablee</p>
                         <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Own work, time: 3 weeks</p>
             </div>
                 </div>
             </a>
 
-            <a href="https://www.youtube.com/watch?v=pG9hNLwEt24" target="_blank" class="project-item-link">
+            <a href="vhttps://www.youtube.com/watch?v=pG9hNLwEt24" target="_blank" class="project-item-link">
             <div class="project-item">
                 <img src="skyland.png" alt="SkyLand">
                 <div class="project-content">
                 <h3>SkyLand (ToyBox)</h3>
                 <p>A prototype of 3D Mario-style game mechanics, featuring obstacles, with enemies and power-ups coming soon.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #b74b4b;">Demo coming soon</p>
+                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Demo coming soon</p>
                         <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Own work, time: 2 weeks</p>
             </div>
             </div>
@@ -633,7 +881,7 @@ section{
                 <div class="project-content">
                 <h3>Strandzha Adventures 3D</h3>
                 <p>A demo of basic technical adventure mechanics in a jungle.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #b74b4b;">Available</p>
+                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Available</p>
                         <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Own work, time: 3 weeks</p>
             </div>
             </div>
@@ -641,13 +889,112 @@ section{
             </a>
 
     </section>
+<section id="models" class="models">
+    <h2>Models 3D</h2>
+
+    <div class="models-slider">
+
+        <div class="model-card">
+            <img src="model1.png" alt="3D Model 1">
+            <h3>Fantasy Sword</h3>
+            <p>Game-ready low poly weapon.</p>
+        </div>
+
+        <div class="model-card">
+            <img src="model2.png" alt="3D Model 2">
+            <h3>Stylized Tree</h3>
+            <p>Optimized for mobile games.</p>
+        </div>
+
+        <div class="model-card">
+            <img src="model3.png" alt="3D Model 3">
+            <h3>Crate Prop</h3>
+            <p>Modular environment asset.</p>
+        </div>
+
+        <div class="model-card">
+            <img src="model4.png" alt="3D Model 4">
+            <h3>Enemy Character</h3>
+            <p>Rigged and animated.</p>
+        </div>
+
+        <div class="model-card">
+            <img src="model5.png" alt="3D Model 5">
+            <h3>Medieval House</h3>
+            <p>Game-ready environment piece.</p>
+        </div>
+
+    </div>
+</section>
+<section id="sfx" class="sfx">
+    <h2>SFX & Other Assets</h2>
+
+    <div class="sfx-slider">
+
+        <div class="sfx-card">
+            <img src="sfx1.png" alt="Footstep Sounds">
+            <h3>Footstep Pack</h3>
+            <p>High-quality footstep sounds for multiple surfaces.</p>
+        </div>
+
+        <div class="sfx-card">
+            <img src="sfx2.png" alt="UI Sounds">
+            <h3>UI Sound Kit</h3>
+            <p>Clicks, hover effects, menu transitions.</p>
+        </div>
+
+        <div class="sfx-card">
+            <img src="sfx3.png" alt="Weapon Sounds">
+            <h3>Weapon Effects</h3>
+            <p>Gunshots, reload, explosions.</p>
+        </div>
+
+        <div class="sfx-card">
+            <img src="sfx4.png" alt="Ambient Sounds">
+            <h3>Ambient Pack</h3>
+            <p>Forest, wind, cave, horror ambience.</p>
+        </div>
+
+    </div>
+</section>
+<section id="assets" class="assets">
+    <h2>Assets</h2>
+
+    <div class="assets-slider">
+
+        <div class="asset-card">
+            <img src="ui_pack.png" alt="UI Pack">
+            <h3>UI Pack</h3>
+            <p>Stylized game-ready UI elements.</p>
+        </div>
+
+        <div class="asset-card">
+            <img src="shader_pack.png" alt="Shader Pack">
+            <h3>Shader Collection</h3>
+            <p>Custom shaders optimized for mobile and PC.</p>
+        </div>
+
+        <div class="asset-card">
+            <img src="environment_pack.png" alt="Environment Pack">
+            <h3>Environment Kit</h3>
+            <p>Modular environment assets for fast level design.</p>
+        </div>
+
+        <div class="asset-card">
+            <img src="vfx_pack.png" alt="VFX Pack">
+            <h3>VFX Pack</h3>
+            <p>Particles, explosions and magical effects.</p>
+        </div>
+
+    </div>
+</section>
 
     <section id="contact" class="contact">
         <h2>Contact</h2>
         <p>Gmail: danielesco2004@gmail.com</p>
         <p>Whatsapp: +502 50718130</p>
     </section>
-
+</div>
     <footer>
         <p>&copy; 2026 Daniel Escobar All rights reserved.</p>
     </footer>
