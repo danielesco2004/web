@@ -1,1011 +1,988 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="referrer" content="strict-origin-when-cross-origin" />
-<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-    <title>Game Developer Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap');
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Developer Portfolio</title>
 
-        *{
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            text-decoration: none;
-            border: none;
-            outline: none;
-            font-family: 'Poppins', sans-serif;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+background:
+radial-gradient(circle at 20% 30%, #5a8cff 0%, transparent 40%),
+radial-gradient(circle at 70% 20%, #caa6ff 0%, transparent 40%),
+radial-gradient(circle at 60% 60%, #ff7aa8 0%, transparent 40%),
+radial-gradient(circle at 30% 70%, #ffe58a 0%, transparent 40%),
+radial-gradient(circle at 80% 70%, #6ec5ff 0%, transparent 40%),
+#cfd6ff;
+    background-attachment: fixed;
+    background-size: cover;
+color: #ffffff;
+
+}
+
 :root{
-    --bg-color: #13141d;      /* nuevo fondo */
-    --main-color: #393a56;    /* nuevo color principal */
+--main-color:#ff7a18;
 }
-        html{
-            font-size: 62.5%;
-        }
+.models h2{
+margin-bottom:40px;
+}
+/* NAVBAR */
 
-        body{
-            width: 100%;
-            height: 100vh;
-            overflow-x: hidden;
-            background-color: var(--bg-color);
-            color: white;
-        }
+header{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:25px 60px;
+}
+nav a.active{
+background: linear-gradient(90deg,#7ea6ff,#e0c9ff,#ff9fc0);
 
-        header{
-            margin-top: 20px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem 9%;
-            //background-color: transparent;
-            filter: drop-shadow(10px);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-        }
-.header-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%; /* ocupa todo el ancho */
-    max-width: 100vw; /* aseguramos que no se recorte */
-    padding: 1rem 9%; /* mantiene espacio interno */
-    background-color: #31324d; /* negro semi-transparente */
-    border-radius: 0; /* ya no queremos bordes redondeados */
-    position: fixed; /* pegado arriba */
-    top: 0; /* hasta el tope */
-    left: 0;
-    z-index: 1000; /* por encima de todo */
-    box-sizing: border-box; /* aseguramos que padding no rompa ancho */
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+nav a{
+transition:0.3s;
+}
+nav{
+display:flex;
+justify-content:center;
+gap:25px;
+padding:10px 20px;
+margin:auto;
+width:fit-content;
+
+border-radius:20px;
+background: rgba(255,255,255,0.08);
+backdrop-filter: blur(12px);
+
+border:1px solid rgba(255,255,255,0.15);
 }
 
+.logo{
+font-size:22px;
+font-weight:bold;
+color:#ffffff;
 
-        .logo{
-            font-size: 3rem;
-            color: #ffffff;
-            font-weight: 800;
-            cursor: pointer;
-            transition: 0.5s ease;
-        }
+}
 
-        .logo:hover{
-            transform: scale(1.1);
-        }
+nav a{
+text-decoration:none;
+color:#ffffff;
+font-size:14px;
+font-weight:600;
+letter-spacing:0.5px;
+}
 
-        nav a{
-            font-size: 1.8rem;
-            color: white;
-            margin-left: 4rem;
-            font-weight: 500;
-            transition: 0.3s ease;
-            border-bottom: 3px solid transparent;
-        }
+nav a:hover{
+background: linear-gradient(90deg,#5a8cff,#caa6ff,#ff7aa8);
 
-        nav a:hover,
-        nav a.active{
-            color: var(--main-color);
-            border-bottom: 3px solid var(--main-color);
-        }
-
-        @media(max-width:995px){
-            nav{
-                position: absolute;
-                display: none;
-                top: 0;
-                right: 0;
-                width: 40%;
-                border-left: 3px solid var(--main-color);
-                border-bottom: 3px solid var(--main-color);
-                border-bottom-left-radius: 2rem;
-                padding: 1rem solid;
-                background-color: #161616;
-                border-top: 0.1rem solid rgba(0,0,0,0.1);
-            }
-
-            nav.active{
-                display: block;
-            }
-
-            nav a{
-                display: block;
-                font-size: 2rem;
-                margin: 3rem 0;
-            }
-
-            nav a:hover,
-            nav a.active{
-                padding: 1rem;
-                border-radius: 0.5rem;
-                border-bottom: 0.5rem solid var(--main-color);
-            }
-        }
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
+}
+ .card, .about-card, .exp-card, .slider-card {
+    background: rgba(255, 255, 255, 0.7); /* ligeramente más sólido para destacar */
+    border: 1px solid rgba(0,0,0,0.15); /* bordes suaves */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* sombras un poco más definidas sobre gris */
+}
+/* SECTIONS */
 
 section{
-    padding: 6rem 9%;
+padding:90px 60px;
+}
+#about{
+margin-top:-80px;
+}
+#skills{
+margin-top:-80px;
+}
+.hero{
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
 
-    
-    background: transparent; /* importante */
+.hero-text{
+max-width:500px;
+}
+
+.hero-text h3{
+font-family:'Poppins', sans-serif;
+font-weight:400;
+color:#ffffff;
+margin-bottom:10px;
+font-weight:bold;
+}
+.hero-text h3 span{
+color:#ffffff;
+font-weight:normal;
+
 
 }
 
-        .home{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8rem;
-                background: transparent;
+.hero-text h1{
+font-family:'Poppins', sans-serif;
+font-weight:700;
+font-size:60px;
+margin-bottom:20px;
+}
 
-        }
+.hero-text p{
+color: #ffffff;
+margin-bottom:30px;
+}
 
-        .home .home-content h1{
-            font-size: 6rem;
-            font-weight: 700;
-            line-height: 1.3;
-        }
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* para que quede encima de todo */
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:11px 60px;
+    background: rgba(0,0,0,0.1); /* un fondo semi-transparente */
+    backdrop-filter: blur(35px);
+}
+.btn{
+background: linear-gradient(90deg,#5a8cff,#caa6ff,#ff7aa8);
 
-        span{
-            color: var(--main-color);
-        }
+color:white;
+font-weight:bold;
+padding:12px 28px;
+border-radius:40px;
+text-decoration:none;
+display:inline-block;
+transition:0.25s;
+}
+.btn:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px rgba(255,122,168,0.6);
+}
 
-        .home-content h3{
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
+.hero-img img{
+width:380px;
+animation: float 3s ease-in-out infinite;
+border-radius:50%;
 
-        .home-content p{
-            font-size: 1.6rem;
-        }
+/* glass ring */
+border:7px solid rgba(255,255,255,0.35);
+backdrop-filter: blur(7px);
 
-        .home-img{
-            border-radius: 50%;
-        }
+box-shadow:
+0 0 30px rgba(90,140,255,1.6),
+0 0 60px rgba(202,166,255,1.4),
+0 0 90px rgba(255,122,168,1.3);
 
-        .home-img img{
-            position: relative;
-            width: 16vw;
-            border-radius: 50%;
-            box-shadow: 0 0 25px solid var(--main-color);
-            cursor: pointer;
-            transition: 0.2s linear;
-        }
+}
 
-        .home-img img:hover{
-            font-size: 1.8rem;
-            font-weight: 500;
-        }
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+}
 
-        .social-icons a{
-            display: inline-flex;
-            justify-content: center;
-            align-items: center;
-            width: 4rem;
-            height: 4rem;
-            background-color: transparent;
-            border: 0.2rem solid var(--main-color);
-            font-size: 2rem;
-            border-radius: 50%;
-            margin: 3rem 1.5rem 3rem 0;
-            transition: 0.3s ease;
-            color: var(--main-color);
+/* GLASS CARD */
+
+.card{
+margin-top:40px;
+width:320px;
+padding:15px;
+border-radius:20px;
+
+background: rgba(255,255,255,0.08);
+backdrop-filter: blur(18px);
+
+border:1px solid rgba(255,255,255,0.15);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.4),
+inset 0 1px 1px rgba(255,255,255,0.2);
+}
+
+/* SOCIAL ICONS */
+
+.socials{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:50px;
+}
+
+.socials a{
+width:50px;
+height:50px;
+display:flex;
+align-items:center;
+justify-content:center;
+text-decoration: none;
+
+font-size:22px;
+    color: #ffffff;
+
+border-radius:50%;
+
+background: rgba(255,255,255,0.08);
+backdrop-filter: blur(12px);
+
+border:1px solid rgba(255,255,255,0.15);
+
+box-shadow:
+0 0 8px rgba(255,122,24,0.5);
+
+transition:0.25s;
+}
+
+.socials a:hover{
+transform:translateY(-4px);
+box-shadow:
+0 0 12px rgba(255,122,24,0.7),
+0 0 20px rgba(255,122,24,0.5);
+}
+
+/* ABOUT ME */
+
+#about{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    padding:140px 60px;
+}
+
+.about-cards{
+    display:flex;
+    gap:25px;
+    flex-wrap:wrap;
+    justify-content:center;
+    margin-top:40px;
+}
+
+.about-card{
+    width:280px;
+    padding:20px;
+    border-radius:20px;
+
+    background: rgba(255,255,255,0.08);
+    backdrop-filter: blur(18px);
+    border:1px solid rgba(255,255,255,0.15);
 
     box-shadow:
-        0 0 8px var(--main-color),
-        0 0 18px var(--main-color),
-        0 0 30px rgba(57, 58, 86, 0.6);
+    0 10px 30px rgba(0,0,0,0.4),
+    inset 0 1px 1px rgba(255,255,255,0.2);
+    
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+.about-card:hover{
+transform:translateY(-10px) scale(1.03);
 
-        }
+box-shadow:
+0 15px 40px rgba(0,0,0,0.5),
+0 0 20px rgba(255,122,168,0.5);
 
-        .social-icons a:hover{
-            color: var(--bg-color);
-            transform: scale(1.3) translateY(-5px);
-            background-color: var(--main-color);
-            box-shadow: 0  0 25px var(--main-color);
-        }
+border:1px solid rgba(255,255,255,0.35);
 
-        .btn{
-            display: inline-block;
-            padding: 1rem 2.8rem;
-            background-color: var(--bg-color);
-            border-radius: 4rem;
-            font-size: 1.6rem;
-            color: var(--main-color);
-            letter-spacing: 0.3rem;
-            font-weight: 600;
-            border: 2px solid var(--main-color);
-            transition: 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn:hover{
-            transform: scale3d(1.03);
-            background-color: var(--main-color);
-            color: var(--bg-color);
-            box-shadow: 0 0 25px var(--main-color);
-        }
-
-        .typing-text{
-            font-size: 34px;
-            font-weight: 600;
-            min-width: 280px;
-        }
-
-        .typing-text span{
-            position: relative;
-        }
-
-        .typing-text span::before{
-            content: "Game Developer";
-            color: var(--main-color);
-            animation: words 20s infinite;
-        }
-
-        .typing-text span::after{
-            content: "";
-            background-color: var(--bg-color);
-            position: absolute;
-            width: calc(100% + 8px);
-            height: 100%;
-            border-left: 3px solid var(--bg-color);
-            right: -8;
-            animation: cursor 0.6s infinite;
-        }
-
-        @keyframes cursor{
-            to{
-                border-left: 3px solid var(--main-color);
-            }
-        }
-
-        @keyframes words{
-            0%, 20%{
-                content: "Game Developer";
-            }
-            21%, 40%{
-                content: "Indie Developer";
-            }
-            41%, 60%{
-                content: "Prototype Creator";
-            }
-            61%, 80%{
-                content: "Unity Expert";
-            }
-            81%, 100%{
-                content: "Unreal Specialist";
-            }
-        }
-
-        @media (max-width: 1000px){
-            .home{
-                gap: 4rem;
-            }
-        }
-
-        @media(max-width:995px){
-            .home{
-                flex-direction: column;
-                margin: 5rem 4rem;
-            }
-
-            .home .home-content h3{
-                font-size: 2.5rem;
-            }
-
-            .home-content h1{
-                font-size: 5rem;
-            }
-
-            .home-img img{
-                width: 70vw;
-                margin-top: 4rem;
-            }
-        }
-
-        /* Additional styles for other sections */
-        .about, .projects, .prototypes, .contact, .models {
-            background: #23243a;
-
-            text-align: center;
-        }
-
-        .about h2, .projects h2, .prototypes h2, .contact h2, .models h2 {
-            font-size: 4rem;
-            margin-bottom: 2rem;
-            color: #ffffff;
-
-
-
-        }
-
-        .about p, .projects p, .prototypes p, .contact p {
-            font-size: 1.6rem;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* -------------------- */
-        /* ABOUT ME GRID - EXCLUSIVO */
-        /* -------------------- */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-            margin-top: 50px;
-        }
-
-        .about-grid .project-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--main-color);
-            border-radius: 12px;
-            transition: 0.3s ease;
-        }
-
-        .about-grid .project-item img.edu-logo {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            margin-bottom: 15px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .about-grid .project-item h3 {
-            color: var(--main-color);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-            text-align: center;
-        }
-
-        .about-grid .project-item p {
-            font-size: 1.4rem;
-            text-align: center;
-        }
-
-        /* -------------------- */
-        /* PROJECTS / PROTOTYPES */
-        /* -------------------- */
-        .project-item{
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid var(--main-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: 0.3s ease;
-        }
-
-        .project-item img{
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            display: block;
-        }
-
-        .project-content{
-            padding: 20px;
-        }
-        .project-item-link {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
-
-        .project-item-link:hover .project-item {
-            transform: translateY(-10px);
-            box-shadow: 0 0 25px var(--main-color);
-        }
-
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
-            margin-top: 50px;
-        }
-
-        .project-item h3 {
-            color: var(--main-color);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .project-item p {
-            font-size: 1.4rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 20px;
-            background-color: #11121a;
-            color: white;
-        }
-
-.home-img {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* centra horizontal */
-    gap: 10px;
+transition:0.3s ease;
 }
 
-.video-bg {
-    width: 35vw;   /* 90% del ancho de la pantalla */
-    height: 35vh;  /* 50% de la altura de la pantalla */
-    border-radius: 20px;
+.about-card img{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    margin-bottom:15px;
 }
 
-.video-bg iframe {
-    width: 100%;
-    height: 100%;
+.about-card h3{
+    color:#ffffff;
+    margin-bottom:8px;
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
 }
 
-
-.video-caption {
-    font-size: 14px;
-    color: #ccc;
-    text-align: center;
-    letter-spacing: 1px;
-    opacity: 0.8;
-}
-/* -------------------- */
-/* MODELS 3D SECTION */
-/* -------------------- */
-
-
-
-
-.models-slider {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 20px;
+.about-card p{
+    color:#ffffff;
+    font-size:14px;
 }
 
-.models-slider::-webkit-scrollbar {
-    height: 8px;
+/* EXPERIENCE CARDS */
+
+.experience-cards{
+display:flex;
+gap:30px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:40px;
 }
 
-.models-slider::-webkit-scrollbar-thumb {
-    background: var(--main-color);
-    border-radius: 10px;
+.exp-card{
+width:390px;
+border-radius:20px;
+overflow:visible;
+
+
+background: rgba(255,255,255,0.08);
+backdrop-filter: blur(18px);
+border:1px solid rgba(255,255,255,0.15);
+
+box-shadow:
+0 10px 30px rgba(0,0,0,0.4),
+inset 0 1px 1px rgba(255,255,255,0.2);
+
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+padding-bottom:35px;
 }
 
-.model-card {
-    min-width: 250px;
+.exp-card h3{
+color:#ffffff;
+margin-bottom:10px;
+font-size:22px;
+}
+
+.exp-card p{
+font-size:13px;
+color:#ffffff;
+line-height:1.5;
+padding:0 20px;
+}
+
+.exp-card img{
+width:100%;
+height:200px;
+object-fit:cover;
+border-radius:20px 20px 0 0;
+margin-bottom:20px;
+}
+
+.exp-card p.exp-main{
+margin-top:10px;
+font-size:15px;
+color:#ff7a18;
+}
+
+.exp-card p.exp-detail{
+margin-top:6px;
+font-size:14px;
+color:#bbb;
+}
+
+.exp-card p.exp-type{
+margin-top:6px;
+font-size:14px;
+color:#9aa0ff;
+}
+
+/* SKILLS */
+
+#skills, #experience, #contact, #prototypes, .models{
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+.models{
+max-width:1200px;
+margin:auto;
+}
+.skills{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+justify-content:center;
+margin-top:40px;
+
+}
+
+.skill {
+    padding: 20px 30px;
+    border-radius: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    /* Sombra */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+.skill img{
+width:140px;
+height:140px;
+margin-bottom:10px;
+}
+/* Opcional: efecto al pasar el mouse */
+.skill:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* EXPERIENCE */
+
+
+/* CONTACT */
+
+.contact{
+max-width:400px;
+margin:auto;
+}
+
+input,textarea{
+width:100%;
+padding:10px;
+margin:10px 0;
+border:none;
+border-radius:6px;
+}
+
+button{
+background: linear-gradient(90deg,#5a8cff,#caa6ff,#ff7aa8);
+border:none;
+padding:12px;
+color:white;
+border-radius:24px;
+cursor:pointer;
+font-weight:bold;
+transition:0.25s;
+}
+
+button:hover{
+transform:scale(1.05);
+box-shadow:0 0 20px rgba(255,122,168,0.6);
+}
+.slider{
+display:flex;
+gap:20px;
+overflow-x:auto;
+scroll-behavior:smooth;
+
+padding-top:20px;
+padding-bottom:20px;
+
+width:100%;
+cursor:grab;
+}
+.slider-card{
+transition:transform .25s ease, box-shadow .25s ease;
+}
+
+.slider-card:hover{
+transform:translateY(-10px) scale(1.05);
+box-shadow:0 10px 40px rgba(0,0,0,0.6);
+}
+
+.slider{
+cursor:grab;
+}
+
+.slider:active{
+cursor:grabbing;
+}
+.slider::-webkit-scrollbar{
+height:8px;
+}
+
+.slider::-webkit-scrollbar-thumb{
+background: linear-gradient(90deg,#5a8cff,#caa6ff,#ff7aa8);
+border-radius:10px;
+}
+
+.slider-card{
+min-width:250px;
+flex-shrink:0;
+background:rgba(255,255,255,0.08);
+border:none;
+border-radius:12px;
+padding:15px;
+transition:0.3s ease;
+}
+
+.slider-card:hover{
+transform:translateY(-8px);
+box-shadow:0 0 20px var(--main-color);
+}
+
+.slider-card img{
+width:100%;
+height:180px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:10px;
+}
+/* TESTIMONIAL CARD */
+
+.testimonial{
+position:relative;
+text-align:center;
+padding-top:40px;
+
+animation: float 6s ease-in-out infinite;
+
+}
+
+.quote{
+position:absolute;
+top:-10px;
+left:20px;
+font-size:65px;
+color: #ffffff;
+font-weight:bold;
+font-family: "Playfair Display", serif;
+
+}
+
+.testimonial-text{
+color:#ddd;
+font-size:14px;
+line-height:1.6;
+margin-bottom:20px;
+padding:0 10px;
+}
+
+.testimonial-avatar{
+width:60px;
+height:60px;
+border-radius:50%;
+margin-top:10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
+}
+.testimonial-user{
+display:flex;
+align-items:center;
+justify-content:center;
+gap:12px;
+margin-top:-35px;
+}
+
+.testimonial-name{
+margin-top:35px;
+font-weight:bold;
+color:#ff7a18;
+}
+section h1 {
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
+}
+.hero-divider {
+    width: 450px; /* ancho de la línea */
+    height: 2px; /* grosor */
+    background-color: #ff7a18; /* color principal */
+    margin: 20px 0; /* espacio arriba y abajo */
+    border: none;
     background: rgba(255, 255, 255, 0.08);
-    border: 1px solid var(--main-color);
-    border-radius: 12px;
-    padding: 15px;
-    flex-shrink: 0;
-    transition: 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    
+    border-radius: 3px;
 }
 
-.model-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 20px var(--main-color);
+.gradient-text{
+background: linear-gradient(90deg,#5a8cff,#caa6ff,#ff7aa8,#ff7a18);
+-webkit-background-clip: text;
+-webkit-text-fill-color: transparent;
+background-clip: text;
 }
-
-.model-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.model-card h3 {
-    color: var(--main-color);
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-.model-card p {
-    font-size: 1.3rem;
-}
-/* -------------------- */
-/* SFX & OTHER ASSETS SECTION */
-/* -------------------- */
-
-.sfx {
-    background: #23243a;
-    text-align: center;
-}
-
-.sfx h2 {
-    font-size: 4rem;
-    margin-bottom: 2rem;
-    color: #ffffff;
-}
-
-.sfx-slider {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 20px;
-}
-
-.sfx-slider::-webkit-scrollbar {
-    height: 8px;
-}
-
-.sfx-slider::-webkit-scrollbar-thumb {
-    background: var(--main-color);
-    border-radius: 10px;
-}
-
-.sfx-card {
-    min-width: 250px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid var(--main-color);
-    border-radius: 12px;
-    padding: 15px;
-    flex-shrink: 0;
-    transition: 0.3s ease;
-}
-
-.sfx-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 20px var(--main-color);
-}
-
-.sfx-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.sfx-card h3 {
-    color: var(--main-color);
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-.sfx-card p {
-    font-size: 1.3rem;
-}
-/* -------------------- */
-/* ASSETS SECTION */
-/* -------------------- */
-
-.assets {
-    background: #23243a;
-    text-align: center;
-}
-
-.assets h2 {
-    font-size: 4rem;
-    margin-bottom: 2rem;
-    color: #ffffff;
-}
-
-.assets-slider {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 20px;
-}
-
-.assets-slider::-webkit-scrollbar {
-    height: 8px;
-}
-
-.assets-slider::-webkit-scrollbar-thumb {
-    background: var(--main-color);
-    border-radius: 10px;
-}
-
-.asset-card {
-    min-width: 250px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid var(--main-color);
-    border-radius: 12px;
-    padding: 15px;
-    flex-shrink: 0;
-    transition: 0.3s ease;
-}
-
-.asset-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 20px var(--main-color);
-}
-
-.asset-card img {
-    width: 100%;
-    height: 180px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.asset-card h3 {
-    color: var(--main-color);
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-.asset-card p {
-    font-size: 1.3rem;
-}
-/* -------------------- */
-/* SHADERS SECTION */
-/* -------------------- */
-
-.shaders {
-    background: #23243a;
-    text-align: center;
-}
-
-.shaders h2 {
-    font-size: 4rem;
-    margin-bottom: 2rem;
-    color: #ffffff;
-}
-
-.shaders-slider {
-    display: flex;
-    gap: 20px;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    padding-bottom: 20px;
-}
-
-.shaders-slider::-webkit-scrollbar {
-    height: 8px;
-}
-
-.shaders-slider::-webkit-scrollbar-thumb {
-    background: var(--main-color);
-    border-radius: 10px;
-}
-
-.shader-card {
-    min-width: 250px;
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid var(--main-color);
-    border-radius: 12px;
-    padding: 15px;
-    flex-shrink: 0;
-    transition: 0.3s ease;
-}
-
-.shader-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 0 20px var(--main-color);
-}
-
-.shader-card img {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.shader-card h3 {
-    color: var(--main-color);
-    font-size: 1.8rem;
-    margin-bottom: 8px;
-}
-
-.shader-card p {
-    font-size: 1.3rem;
-}
-.main-wrapper {
-    width: 95%;
-    max-width: 1400px;
-    margin: 120px auto 0 auto; /* agregamos espacio arriba por el header fixed */
-    background-color: #1c1d2f;
-    padding: 40px 0;
-    border-radius: 20px;
-
-box-shadow: 
-    0 0 65px rgba(0, 0, 0, 0.4);
-
+h1, h2, h3, h4, h5, h6, p, a, span{
 
 }
-nav a {
-    color: white !important;
-}
-.dev-glow{
-    color: #00ff88; /* verde principal */
-    text-shadow:
-        0 0 8px #00ff88;
-}
-.about-grid model-viewer{
-    max-width: 160px;
-    margin-bottom: 15px;
-}
-    </style>
+</style>
 </head>
+
 <body>
-    <header>
 
-    <div class="header-content">
-        <div class="logo">Game<span class="dev-glow">Dev</span></div>
-        <nav>
-            <a href="#home" class="active">Home</a>
-            <a href="#about">About</a>
-            <a href="#projects">Projects</a>
-            <a href="#prototypes">Prototypes & Solo Projects</a>
-            <a href="#contact">Contact</a>
+<header>
 
-        </nav>
+<div class="logo">daniel.</div>
+
+<nav>
+<a href="#home" class="active">Home</a>
+<a href="#about">About Me</a>
+<a href="#skills">Skills</a>
+<a href="#experience">Experience</a>
+<a href="#prototypes">Prototypes</a>
+<a href="#contact">Contact</a>
+<a href="#models">Gallery</a>
+</nav>
+
+</header>
+
+<section id="home">
+
+<div class="hero">
+
+<div class="hero-text">
+
+<h3><span>Hello, I am</span>&nbsp;&nbsp;&nbsp;Daniel</h3>
+<h1>GameDeveloper</h1>
+
+<p>I have been developing video games in Unity for over 5 years.</p>
+
+
+<a class="btn">Hire Me</a>
+
+
+<div class="card testimonial">
+
+<div class="quote">“</div>
+
+<p class="testimonial-text">
+Working with Daniel was an amazing experience. 
+His Unity and C# skills allowed our project to reach a new level 
+of polish and gameplay quality. 
+</p>
+
+<div class="testimonial-user">
+<img src="images.png" class="testimonial-avatar">
+<p class="testimonial-name">Carol Abbott</p>
+</div>
+
+</div>
+
+</div>
+
+<div class="hero-img">
+<img src="asta.png">
+</div>
+
+</div>
+
+<div class="socials">
+
+<a href="https://discord.gg/TUCODIGO" target="_blank">
+<i class="fa-brands fa-discord"></i>
+</a>
+
+<a href="https://wa.me/50212345678" target="_blank">
+<i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<a href="https://linkedin.com/in/tuusuario" target="_blank">
+<i class="fa-brands fa-linkedin"></i>
+</a>
+
+<a href="mailto:correo@email.com">
+<i class="fa-solid fa-envelope"></i>
+</a>
+
+</div>
+</section>
+
+<section id="about">
+
+<h1>About Me</h1>
+
+<div class="about-cards">
+    <div class="about-card">
+        <img src="tech.png" alt="Example 1">
+        <h3>Skills</h3>
+        <p>Unity, C#, Photoshop, Illustrator, Visual Studio, Blender.</p>
     </div>
-    </header>
-<div class="main-wrapper">
-    <section id="home" class="home">
-
-<div class="home-img">
-
-<div class="video-bg">
-  <iframe
-        src="https://www.youtube.com/embed/pG9hNLwEt24?autoplay=1&mute=1&loop=1&playlist=pG9hNLwEt24&controls=0&showinfo=0&modestbranding=1"
-    frameborder="0"
-    referrerpolicy="strict-origin-when-cross-origin">
-    allow="autoplay; encrypted-media; fullscreen"
-    allowfullscreen>
-
-
-  </iframe>
+    <div class="about-card">
+        <img src="soft.png" alt="Example 2">
+        <h3>Soft Skills</h3>
+        <p>Teamwork, Time Management, Problem Solving, Communication, Adaptability</p>
+    </div>
+    <div class="about-card">
+        <img src="u.png" alt="Example 3">
+        <h3>Education</h3>
+        <p>Master's Degree in Engineering with a Specialization in Computer Science. Bachelor’s Degree in Computer Science.</p>
+    </div>
+    <div class="about-card">
+        <img src="lang.png" alt="Example 4">
+        <h3>Languages</h3>
+        <p>English ★★★★★</p>
+        <p>Spanish ★★★★★</p>
+        <p>Italian★★★★☆</p>
+        <p>Indonesian★★★☆☆</p>
+    </div>
+    <div class="about-card">
+        <img src="unity.png" alt="Example 5">
+        <h3>Experience</h3>
+        <p>50+ shipped games, 80+ projects participated in, including Platformers, RPGs, Strategy, Action, Infinite Runners; experience with shaders, models, and custom C# scripts.</p>
+    </div>
 </div>
-    <p class="video-caption">Last Project</p>
-    <p class="video-caption">Time: 2-3 weeks, technical mechanics demo</p>
+
+</section>
+
+<section id="skills">
+
+<h1>Skills</h1>
+
+<div class="skills">
+<div class="skill">
+<img src="unity2.png">
+<p>Unity</p>
 </div>
-        <div class="home-content">
-            <h3>Hello, I'm</h3>
-            <h1>Daniel <span>Game Developer</span></h1>
-            <p>I have been developing video games in Unity for over 5 years.</p>
-<div class="social-icons">
-    <!-- Gmail -->
-    <a href="https://mail.google.com/mail/?view=cm&to=danielesco2004@gmail.com">
-        <i class="fas fa-envelope"></i>
-    </a>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/50250718130" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Discord -->
-    <a href="https://discord.gg/TU_INVITACION" target="_blank">
-        <i class="fab fa-discord"></i>
-    </a>
-
-    <!-- LinkedIn -->
-    <a href="https://www.linkedin.com/in/TU_USUARIO" target="_blank">
-        <i class="fab fa-linkedin-in"></i>
-    </a>
+<div class="skill">
+<img src="v.png">
+<p>Sony vegas</p>
 </div>
-            <a href="#about" class="btn">More About Me</a>
-        </div>
-        <div class="home-img">
-<img src="asta.png" alt="Profile Image">
-        </div>
-    </section>
-
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>I’m a dedicated game developer with over 5 years of experience creating 3D games in Unity for both mobile and PC platforms. I specialize in C# and enjoy designing engaging mechanics and immersive experiences for indie and experimental projects.</p>
-
-        <div class="about-grid">
-
-            <!-- Technical Skills -->
-            <div class="project-item">
-<model-viewer 
-    src="llave.glb"
-    auto-rotate
-    camera-controls
-min-camera-orbit="auto 75deg auto"
-max-camera-orbit="auto 75deg auto"
-    shadow-intensity="1"
-    exposure="1"
-    environment-image="neutral"
-    style="width: 100%; height: 200px; background: transparent;">
-</model-viewer>
-                <h3>Technical Skills</h3>
-                <p>Unity, C#, Photoshop, Illustrator, Visual Studio, Blender.</p>
-            </div>
-
-            <!-- Soft Skills -->
-            <div class="project-item">
-<model-viewer 
-    src="watch.glb"
-    auto-rotate
-    camera-controls
-min-camera-orbit="auto 75deg auto"
-max-camera-orbit="auto 75deg auto"
-    shadow-intensity="1"
-    exposure="1"
-    environment-image="neutral"
-    style="width: 100%; height: 200px; background: transparent;">
-</model-viewer>
-                <h3>Soft Skills</h3>
-                <p>Teamwork, Time Management, Problem Solving, Communication, Adaptability.</p>
-            </div>
-
-            <!-- Languages -->
-            <div class="project-item">
-<model-viewer 
-    src="message.glb"
-    auto-rotate
-    camera-controls
-min-camera-orbit="auto 75deg auto"
-max-camera-orbit="auto 75deg auto"
-    shadow-intensity="1"
-    exposure="1"
-    environment-image="neutral"
-    style="width: 100%; height: 200px; background: transparent;">
-</model-viewer>
-                <h3>Languages</h3>
-                <p>English ★★★★★</p>
-                <p>Spanish ★★★★★</p>
-                <p>Indonesian ★★★☆☆</p>
-                <p>Italian ★★★★☆</p>
-            </div>
-
-            <!-- Education -->
-            <div class="project-item">
-                <img src="u.png" alt="University Logo" class="edu-logo">
-                <h3>Education</h3>
-                <p>Master's Degree in Engineering with a Specialization in Computer Science.</p>
-                <p>Bachelor’s Degree in Computer Science.</p>
-            </div>
+<div class="skill">
+<img src="blender.png">
+<p>Blender</p>
+</div>
+<div class="skill">
+<img src="ps.png">
+<p>Photoshop</p>
+</div>
+<div class="skill">
+<img src="c.png">
+<p>C#</p>
+</div>
 
 
-            <!-- Experience -->
-            <div class="project-item">
-<model-viewer 
-    src="unity.glb"
-    auto-rotate
-    camera-controls
-min-camera-orbit="auto 75deg auto"
-max-camera-orbit="auto 75deg auto"
-    shadow-intensity="1"
-    exposure="1"
-    environment-image="neutral"
-    style="width: 100%; height: 200px; background: transparent;">
-</model-viewer>
-                <h3>Experience</h3>
-                <p>50+ shipped games, 80+ projects participated in, including Platformers, RPGs, Strategy, Action, Infinite Runners; experience with shaders, models, and custom C# scripts.</p>
-            </div>
 
-        </div>
-    </section>
+</div>
 
-    <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <div class="project-grid">
-            <a href="https://play.google.com/store/apps/details?id=com.netease.idv.googleplay" target="_blank" class="project-item-link">
-            <div class="project-item">
-                <img src="Identity.png" alt="Identity V">
-                <div class="project-content">
-                    <h3>Identity V</h3>
-                    <p>is an asymmetric 1v4 mobile horror game with gothic visuals, mysterious stories, randomized maps, and multiple characters survive or hunt.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Available only on Playstore</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0a0;">C# Role: Inventory mechanics, weapon prototype, character rigging and movement, options and mechanics coding, UI canvas.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Freelance collaboration</p>
-                </div>
-            </div>
-            </a>
+</section>
 
-            <a href="https://play.google.com/store/apps/details?id=com.darkbluecreations.stickman.gun.battle.simulator" target="_blank" class="project-item-link">
-                <div class="project-item">
-                    <img src="stickman.png" alt="Stickman battle simulator">
-                    <div class="project-content">
-                        <h3>Stickman battle simulator</h3>
-                        <p>A free battle simulator where players command a stickman army using melee, guns, and sci-fi weapons.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Available only on Playstore</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0a0;">C# Role: Player coding, inventory system, weapon system, save system.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Freelance collaboration</p>
-                    </div>
-                </div>
-            </a>
+<section id="experience">
 
-            <a href="https://play.google.com/store/apps/details?id=com.Earthkwak.Platformer" target="_blank" class="project-item-link">
-            <div class="project-item">
-                <img src="bear.png" alt="Super Bear Adventure">
-                <div class="project-content">
+<h1>Experience</h1>
+
+<div class="experience-cards">
+
+<div class="exp-card">
+
+<img src="bear.png" alt="Super Bear Adventure">
+
                     <h3>Super Bear Adventure</h3>
                     <p>A 3D exploration game inspired by ’90s titles. Play as Baaren, a brave bear on a mission to save the kingdom from the threat of purple honey, discovering secrets, collectibles, vehicles.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Available only on Playstore</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0a0;">C# Role: Movement development.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Freelance collaboration</p>
-                </div>
-            </div>
-        </div>
-            </a>
-    </section>
 
-    <section id="prototypes" class="prototypes">
-        <h2>Prototypes and Solo Projects</h2>
-        <div class="project-grid">
+<p class="exp-main">Available only on Playstore</p>
+<p class="exp-detail">C# Role: Movement development.</p>
+<p class="exp-type">Freelance collaboration</p>
 
-            <a href=" target="_blank" class="project-item-link">
-            <div class="project-item">
+</div>
 
-                <img src="goomie.png" alt="Goomie Gum">
-                <div class="project-content">
-                    <h3>Goomie Gum</h3>
-                        <p>A game inspired by Stumble Guys: reach the finish line and claim the trophy!.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Available</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Own work, time: 2 Months</p>
-                </div>
-            </div>
-            </a>
+<div class="exp-card">
 
-            <a href="https://drive.google.com/file/d/1tBpN9s1jRRaL5Vg8MichkzDgefVp_F2w/view?usp=drive_link" target="_blank" class="project-item-link">
-            <div class="project-item">
-                <img src="tung.png" alt="Tung tung sahur terror game">
+<img src="Identity.png" alt="Identity V">
+
+<h3>Identity V</h3>
+<p>is an asymmetric 1v4 mobile horror game with gothic visuals, mysterious stories, randomized maps, and multiple characters survive or hunt.</p>
+<p class="exp-main">Available only on Playstore</p>
+<p class="exp-detail">C# Role: Movement development.</p>
+<p class="exp-type">Freelance collaboration</p>
+
+</div>
+
+<div class="exp-card">
+
+<img src="stickman.png" alt="Stickman battle simulator">
+
+<h3>Stickman battle simulator</h3>
+<p>A free battle simulator where players command a stickman army using melee, guns, and sci-fi weapons.</p>
+<p class="exp-main">Available only on Playstore</p>
+<p class="exp-detail">C# Role: Movement development.</p>
+<p class="exp-type">Freelance collaboration</p>
+
+</div>
+
+<div class="exp-card">
+
+<img src="google.png" alt="Google">
+
+<h3>Senior Web Developer</h3>
+<p>Google • 2021 - Present</p>
+<p>Worked on scalable web platforms, performance optimization, and large scale front-end systems.</p>
+
+</div>
+
+
+</div>
+
+</section>
+
+<section id="prototypes">
+
+<h1>Prototypes & Own Work</h1>
+
+<div class="experience-cards">
+
+<div class="exp-card">
+
+<img src="goomie.png">
+
+<div class="project-content">
+<h3>Goomie Gum</h3>
+<p>A game inspired by Stumble Guys: reach the finish line and claim the trophy!</p>
+
+<p class="exp-main">Prototype</p>
+<p class="exp-detail">Unity • C#</p>
+<p class="exp-type">Solo Development</p>
+</div>
+
+</div>
+<div class="exp-card">
+
+<img src="tung.png" alt="Tung tung sahur terror game">
+
                 <div class="project-content">
                 <h3>Tung Tung Sahur Terror Game</h3>
                 <p>A game where you have to escape from Tung Tung Sahur in a haunted house.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Availablee</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Own work, time: 3 weeks</p>
-            </div>
-                </div>
-            </a>
 
-            <a href="vhttps://www.youtube.com/watch?v=pG9hNLwEt24" target="_blank" class="project-item-link">
-            <div class="project-item">
-                <img src="skyland.png" alt="SkyLand">
+<p class="exp-main">Prototype</p>
+<p class="exp-detail">Unity • C#</p>
+<p class="exp-type">Solo Development</p>
+
+</div>
+</div> 
+
+<div class="exp-card">
+
+<img src="skyland.png" alt="SkyLand">
+
                 <div class="project-content">
                 <h3>SkyLand (ToyBox)</h3>
                 <p>A prototype of 3D Mario-style game mechanics, featuring obstacles, with enemies and power-ups coming soon.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Demo coming soon</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Own work, time: 2 weeks</p>
-            </div>
-            </div>
 
-            </a>
+<p class="exp-main">Prototype</p>
+<p class="exp-detail">Unity • C#</p>
+<p class="exp-type">Solo Development</p>
 
-            <a href="https://drive.google.com/file/d/15Nhfd0e3dQmJKjaaTdo8d3T5vSRWcjIr/view?usp=drive_link" target="_blank" class="project-item-link">
-            <div class="project-item">
-                <img src="adventure.png" alt="Strandzha">
+</div>
+</div> 
+
+<div class="exp-card">
+
+<img src="adventure.png" alt="Strandzha">
+
                 <div class="project-content">
                 <h3>Strandzha Adventures 3D</h3>
                 <p>A demo of basic technical adventure mechanics in a jungle.</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: var(--main-color);">Available</p>
-                        <p style="margin-top: 10px; font-size: 1.2rem; color: #a0a0ff;">Own work, time: 3 weeks</p>
-            </div>
-            </div>
 
-            </a>
+<p class="exp-main">Prototype</p>
+<p class="exp-detail">Unity • C#</p>
+<p class="exp-type">Solo Development</p>
 
-    </section>
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <p>Gmail: danielesco2004@gmail.com</p>
-        <p>Whatsapp: +502 50718130</p>
-    </section>
 </div>
-    <footer>
-        <p>&copy; 2026 Daniel Escobar All rights reserved.</p>
-    </footer>
+</div> 
 
-    <script>
-        // Smooth scrolling for navigation
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
+</div>
+
+
+</section>
+
+<section id="models" class="models">
+
+<h1>3D Models</h1>
+
+<div class="slider">
+
+<div class="slider-card">
+<img src="model.jpeg">
+<h3>Fantasy Sword</h3>
+<p>Game ready low poly weapon</p>
+</div>
+
+<div class="slider-card">
+<img src="model.jpeg">
+<h3>Stylized Tree</h3>
+<p>Mobile optimized prop</p>
+</div>
+
+<div class="slider-card">
+<img src="model.jpeg">
+<h3>Crate Prop</h3>
+<p>Environment asset</p>
+</div>
+
+<div class="slider-card">
+<img src="model.jpeg">
+<h3>Fantasy Sword</h3>
+<p>Game ready low poly weapon</p>
+</div>
+
+<div class="slider-card">
+<img src="model.jpeg">
+<h3>Stylized Tree</h3>
+<p>Mobile optimized prop</p>
+</div>
+
+<div class="slider-card">
+<img src="model.jpeg">
+<h3>Crate Prop</h3>
+<p>Environment asset</p>
+</div>
+
+</div>
+
+<section class="models">
+
+<h1>Shaders</h1>
+
+<div class="slider">
+
+<div class="slider-card">
+<img src="shader1.png">
+<h3>Water Shader</h3>
+<p>Realistic animated water</p>
+</div>
+
+<div class="slider-card">
+<img src="shader2.png">
+<h3>Fire Shader</h3>
+<p>Stylized flame effect</p>
+</div>
+
+<div class="slider-card">
+<img src="shader3.png">
+<h3>Hologram Shader</h3>
+<p>Sci-fi holographic material</p>
+</div>
+
+<div class="slider-card">
+<img src="shader1.png">
+<h3>Water Shader</h3>
+<p>Realistic animated water</p>
+</div>
+
+<div class="slider-card">
+<img src="shader2.png">
+<h3>Fire Shader</h3>
+<p>Stylized flame effect</p>
+</div>
+
+<div class="slider-card">
+<img src="shader3.png">
+<h3>Hologram Shader</h3>
+<p>Sci-fi holographic material</p>
+</div>
+
+</div>
+
+</section>
+
+</section>
+
+
+
+<section id="contact">
+
+<h1>Contact</h1>
+
+<div class="contact">
+
+<input type="text" placeholder="Name">
+<input type="email" placeholder="Email">
+<textarea rows="4" placeholder="Message"></textarea>
+
+<button>Send Message</button>
+
+</div>
+
+</section>
+
 </body>
 </html>
-
-
