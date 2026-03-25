@@ -1,988 +1,1036 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Developer Portfolio</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Daniel — Game Developer</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 <style>
+/* ── RESET & ROOT ───────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-scroll-behavior:smooth;
+:root{
+  --bg:      #0d0d12;
+  --bg2:     #12121a;
+  --bg3:     #16161f;
+  --pink:    #ff3d6e;
+  --magenta: #e040a0;
+  --purple:  #9b59f5;
+  --orange:  #ff7b54;
+  --white:   #ffffff;
+  --dim:     rgba(255,255,255,0.55);
+  --glass:   rgba(255,255,255,0.05);
+  --gborder: rgba(255,255,255,0.10);
+  --card-bg: rgba(22,22,31,0.85);
+  --radius:  14px;
 }
 
 body{
-    min-height:100vh;
-background:
-radial-gradient(circle at 20% 30%, #5a8cff 0%, transparent 40%),
-radial-gradient(circle at 70% 20%, #caa6ff 0%, transparent 40%),
-radial-gradient(circle at 60% 60%, #ff7aa8 0%, transparent 40%),
-radial-gradient(circle at 30% 70%, #ffe58a 0%, transparent 40%),
-radial-gradient(circle at 80% 70%, #6ec5ff 0%, transparent 40%),
-#cfd6ff;
-    background-attachment: fixed;
-    background-size: cover;
-color: #ffffff;
-
+  background: var(--bg);
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  overflow-x: hidden;
 }
 
-:root{
---main-color:#ff7a18;
+/* ── WAVE BG (SVG inline) ──────────────────────────────── */
+.wave-hero{
+  position: absolute;
+  inset: 0; z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
-.models h2{
-margin-bottom:40px;
+.wave-hero svg{
+  position: absolute;
+  bottom: -10%; left: -5%;
+  width: 110%; min-height: 420px;
+  filter: blur(0px);
 }
-/* NAVBAR */
 
+/* ── NAV ───────────────────────────────────────────────── */
 header{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:25px 60px;
+  position: fixed; top: 0; left: 0; right: 0;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 1.1rem 5%;
+  z-index: 200;
+  background: rgba(13,13,18,0.80);
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--gborder);
 }
-nav a.active{
-background: linear-gradient(90deg,#7ea6ff,#e0c9ff,#ff9fc0);
-
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-nav a{
-transition:0.3s;
-}
-nav{
-display:flex;
-justify-content:center;
-gap:25px;
-padding:10px 20px;
-margin:auto;
-width:fit-content;
-
-border-radius:20px;
-background: rgba(255,255,255,0.08);
-backdrop-filter: blur(12px);
-
-border:1px solid rgba(255,255,255,0.15);
-}
-
 .logo{
-font-size:22px;
-font-weight:bold;
-color:#ffffff;
-
+  font-size: 1.35rem; font-weight: 800;
+  color: var(--white); text-decoration: none;
+  display: flex; align-items: center; gap: 0.4rem;
 }
+.logo-dot{ color: var(--pink); font-size: 1.6rem; line-height: 0; }
 
+nav{
+  display: flex; gap: 2rem; align-items: center;
+}
 nav a{
-text-decoration:none;
-color:#ffffff;
-font-size:14px;
-font-weight:600;
-letter-spacing:0.5px;
+  text-decoration: none;
+  font-size: 0.85rem; font-weight: 500;
+  color: var(--dim);
+  transition: color 0.25s;
+}
+nav a:hover, nav a.active{ color: var(--white); }
+
+.nav-cta{
+  background: transparent;
+  border: 1px solid var(--gborder);
+  border-radius: 999px;
+  padding: 0.5rem 1.2rem;
+  font-size: 0.82rem; font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  transition: all 0.25s;
+}
+.nav-cta:hover{
+  background: var(--pink);
+  border-color: var(--pink);
+  color: #fff;
 }
 
-nav a:hover{
-background: linear-gradient(90deg,#5a8cff,#caa6ff,#ff7aa8);
-
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
+/* ── HERO ──────────────────────────────────────────────── */
+#home{
+  position: relative;
+  min-height: 100vh;
+  padding: 9rem 5% 5rem;
+  display: flex; align-items: center;
+  overflow: hidden;
 }
- .card, .about-card, .exp-card, .slider-card {
-    background: rgba(255, 255, 255, 0.7); /* ligeramente más sólido para destacar */
-    border: 1px solid rgba(0,0,0,0.15); /* bordes suaves */
-    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* sombras un poco más definidas sobre gris */
-}
-/* SECTIONS */
-
-section{
-padding:90px 60px;
-}
-#about{
-margin-top:-80px;
-}
-#skills{
-margin-top:-80px;
-}
-.hero{
-display:flex;
-align-items:center;
-justify-content:space-between;
+.hero-grid{
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 3rem; align-items: center;
+  width: 100%;
 }
 
-.hero-text{
-max-width:500px;
+/* badge */
+.badge-row{
+  display: flex; gap: 0.75rem; align-items: center;
+  flex-wrap: wrap; margin-bottom: 1.8rem;
+  opacity: 0; animation: fadeUp 0.7s 0.2s forwards;
+}
+.badge{
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--glass);
+  border: 1px solid var(--gborder);
+  border-radius: 999px;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.75rem; font-weight: 500; color: var(--dim);
+}
+.badge .dot{ width:7px;height:7px;border-radius:50%;background:var(--pink);flex-shrink:0; }
+.badge-avatars{ display:flex; }
+.badge-avatars img{
+  width:26px;height:26px;border-radius:50%;
+  border:2px solid var(--bg);
+  margin-left:-8px; object-fit:cover;
+}
+.badge-avatars img:first-child{ margin-left:0; }
+.badge-star{ color: #ffd14d; font-size:0.75rem; }
+
+/* hero title */
+.hero-title{
+  font-size: clamp(2.6rem, 5.5vw, 5rem);
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.4rem;
+  opacity: 0; animation: fadeUp 0.8s 0.35s forwards;
+}
+.hero-title .grad{
+  background: linear-gradient(90deg, var(--pink) 0%, var(--magenta) 50%, var(--orange) 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-.hero-text h3{
-font-family:'Poppins', sans-serif;
-font-weight:400;
-color:#ffffff;
-margin-bottom:10px;
-font-weight:bold;
-}
-.hero-text h3 span{
-color:#ffffff;
-font-weight:normal;
-
-
+.hero-sub{
+  font-size: 1rem; font-weight: 400; color: var(--dim);
+  line-height: 1.7; max-width: 480px;
+  margin-bottom: 2.2rem;
+  opacity: 0; animation: fadeUp 0.8s 0.5s forwards;
 }
 
-.hero-text h1{
-font-family:'Poppins', sans-serif;
-font-weight:700;
-font-size:60px;
-margin-bottom:20px;
+.hero-btns{
+  display: flex; gap: 1rem; flex-wrap: wrap;
+  opacity: 0; animation: fadeUp 0.8s 0.65s forwards;
 }
-
-.hero-text p{
-color: #ffffff;
-margin-bottom:30px;
+.btn-primary{
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: var(--pink);
+  color: #fff;
+  padding: 0.75rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 700; font-size: 0.9rem;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: all 0.25s;
+  box-shadow: 0 0 30px rgba(255,61,110,0.35);
 }
-
-header{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* para que quede encima de todo */
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    padding:11px 60px;
-    background: rgba(0,0,0,0.1); /* un fondo semi-transparente */
-    backdrop-filter: blur(35px);
+.btn-primary:hover{ transform:translateY(-2px); box-shadow: 0 0 50px rgba(255,61,110,0.55); }
+.btn-outline{
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: transparent;
+  border: 1px solid var(--gborder);
+  color: var(--white);
+  padding: 0.75rem 1.8rem;
+  border-radius: 999px;
+  font-weight: 600; font-size: 0.9rem;
+  text-decoration: none; cursor: pointer;
+  transition: all 0.25s;
 }
-.btn{
-background: linear-gradient(90deg,#5a8cff,#caa6ff,#ff7aa8);
+.btn-outline:hover{ border-color: rgba(255,255,255,0.3); background: var(--glass); }
 
-color:white;
-font-weight:bold;
-padding:12px 28px;
-border-radius:40px;
-text-decoration:none;
-display:inline-block;
-transition:0.25s;
+/* hero right: chart card + photo */
+.hero-right{
+  display: flex; flex-direction: column; gap: 1.2rem;
+  opacity: 0; animation: fadeIn 1s 0.7s forwards;
 }
-.btn:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px rgba(255,122,168,0.6);
+.hero-photo{
+  border-radius: 50%;
+  width: 200px; height: 200px;
+  object-fit: cover;
+  border: 3px solid var(--gborder);
+  box-shadow: 0 0 60px rgba(255,61,110,0.2), 0 0 120px rgba(155,89,245,0.15);
+  animation: float 4s ease-in-out infinite;
+  align-self: center;
 }
-
-.hero-img img{
-width:380px;
-animation: float 3s ease-in-out infinite;
-border-radius:50%;
-
-/* glass ring */
-border:7px solid rgba(255,255,255,0.35);
-backdrop-filter: blur(7px);
-
-box-shadow:
-0 0 30px rgba(90,140,255,1.6),
-0 0 60px rgba(202,166,255,1.4),
-0 0 90px rgba(255,122,168,1.3);
-
+.mini-card{
+  background: var(--card-bg);
+  border: 1px solid var(--gborder);
+  border-radius: var(--radius);
+  padding: 1rem 1.2rem;
+  backdrop-filter: blur(16px);
 }
-
-@keyframes float {
-    0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-15px); }
+.mini-card-label{
+  font-size: 0.7rem; color: var(--dim); margin-bottom: 0.3rem;
 }
-
-/* GLASS CARD */
-
-.card{
-margin-top:40px;
-width:320px;
-padding:15px;
-border-radius:20px;
-
-background: rgba(255,255,255,0.08);
-backdrop-filter: blur(18px);
-
-border:1px solid rgba(255,255,255,0.15);
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.4),
-inset 0 1px 1px rgba(255,255,255,0.2);
+.mini-card-val{
+  font-size: 1.1rem; font-weight: 700;
 }
+.mini-card-val .up{ color: #4ade80; font-size: 0.75rem; margin-left: 0.5rem; }
+/* fake sparkline */
+.sparkline{ margin-top: 0.6rem; }
+.sparkline svg{ width:100%; height:44px; }
 
-/* SOCIAL ICONS */
-
-.socials{
-display:flex;
-justify-content:center;
-gap:20px;
-margin-top:50px;
+/* testimonial card */
+.hero-testimonial{
+  background: var(--card-bg);
+  border: 1px solid var(--gborder);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+  backdrop-filter: blur(16px);
+  font-size: 0.82rem; color: var(--dim); line-height: 1.6;
+  position: relative;
 }
+.hero-testimonial .quote{ color: var(--pink); font-size: 1.8rem; line-height: 0.6; display:block; margin-bottom:0.6rem; }
+.testi-user{ display:flex; align-items:center; gap:0.6rem; margin-top:0.8rem; }
+.testi-user img{ width:32px;height:32px;border-radius:50%;border:1px solid var(--gborder); }
+.testi-user span{ font-size:0.75rem; font-weight:600; color:var(--pink); }
 
-.socials a{
-width:50px;
-height:50px;
-display:flex;
-align-items:center;
-justify-content:center;
-text-decoration: none;
-
-font-size:22px;
-    color: #ffffff;
-
-border-radius:50%;
-
-background: rgba(255,255,255,0.08);
-backdrop-filter: blur(12px);
-
-border:1px solid rgba(255,255,255,0.15);
-
-box-shadow:
-0 0 8px rgba(255,122,24,0.5);
-
-transition:0.25s;
+/* socials */
+.hero-socials{
+  position: absolute; bottom: 3rem; left: 50%;
+  transform: translateX(-50%);
+  display: flex; gap: 1rem; z-index: 3;
+  opacity: 0; animation: fadeIn 1s 1.2s forwards;
 }
-
-.socials a:hover{
-transform:translateY(-4px);
-box-shadow:
-0 0 12px rgba(255,122,24,0.7),
-0 0 20px rgba(255,122,24,0.5);
+.social-pill{
+  display: flex; align-items: center; gap: 0.5rem;
+  background: var(--glass); border: 1px solid var(--gborder);
+  border-radius: 999px; padding: 0.5rem 1.1rem;
+  color: var(--dim); text-decoration: none; font-size: 0.8rem;
+  transition: all 0.25s;
 }
+.social-pill:hover{ color:#fff; border-color:var(--pink); background: rgba(255,61,110,0.1); }
 
-/* ABOUT ME */
-
-#about{
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    text-align:center;
-    padding:140px 60px;
+/* ── TRUSTED SECTION ───────────────────────────────────── */
+.trusted{
+  padding: 4rem 5%;
+  border-top: 1px solid var(--gborder);
+  border-bottom: 1px solid var(--gborder);
+  background: var(--bg2);
 }
-
-.about-cards{
-    display:flex;
-    gap:25px;
-    flex-wrap:wrap;
-    justify-content:center;
-    margin-top:40px;
+.trusted-inner{
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 3rem; align-items: center;
 }
+.trusted-title{
+  font-size: clamp(1.8rem, 3vw, 2.8rem);
+  font-weight: 800; line-height: 1.1;
+}
+.trusted-title .grad{
+  background: linear-gradient(90deg, var(--pink), var(--magenta));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.trusted-desc{ font-size:0.9rem; color:var(--dim); line-height:1.7; }
 
+/* ── SECTION SHARED ────────────────────────────────────── */
+section.pad{ padding: 5.5rem 5%; }
+.section-tag{
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: rgba(255,61,110,0.12);
+  border: 1px solid rgba(255,61,110,0.25);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.72rem; font-weight: 600; color: var(--pink);
+  margin-bottom: 1rem; letter-spacing: 0.05em; text-transform: uppercase;
+}
+.section-title{
+  font-size: clamp(1.7rem, 3.5vw, 2.8rem);
+  font-weight: 800; line-height: 1.1;
+  margin-bottom: 0.75rem;
+}
+.section-title .grad{
+  background: linear-gradient(90deg, var(--pink), var(--magenta));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.section-sub{ font-size:0.9rem; color:var(--dim); line-height:1.7; max-width:520px; margin-bottom:2.5rem; }
+.center{ text-align:center; display:flex; flex-direction:column; align-items:center; }
+
+/* ── ABOUT CARDS ───────────────────────────────────────── */
+.about-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px,1fr));
+  gap: 1.5rem; margin-top: 1rem;
+}
 .about-card{
-    width:280px;
-    padding:20px;
-    border-radius:20px;
-
-    background: rgba(255,255,255,0.08);
-    backdrop-filter: blur(18px);
-    border:1px solid rgba(255,255,255,0.15);
-
-    box-shadow:
-    0 10px 30px rgba(0,0,0,0.4),
-    inset 0 1px 1px rgba(255,255,255,0.2);
-    
-    display:flex;
-    flex-direction:column;
-    align-items:center;
+  background: var(--card-bg);
+  border: 1px solid var(--gborder);
+  border-radius: var(--radius);
+  padding: 1.8rem 1.5rem;
+  backdrop-filter: blur(16px);
+  transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  position: relative; overflow: hidden;
 }
-.about-card:hover{
-transform:translateY(-10px) scale(1.03);
-
-box-shadow:
-0 15px 40px rgba(0,0,0,0.5),
-0 0 20px rgba(255,122,168,0.5);
-
-border:1px solid rgba(255,255,255,0.35);
-
-transition:0.3s ease;
+.about-card::after{
+  content:'';
+  position:absolute; top:0; left:0; right:0; height:2px;
+  background: linear-gradient(90deg, var(--pink), var(--purple));
+  opacity: 0; transition: opacity 0.3s;
 }
-
+.about-card:hover{ transform:translateY(-6px); border-color:rgba(255,61,110,0.35); box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+.about-card:hover::after{ opacity:1; }
 .about-card img{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    margin-bottom:15px;
+  width:48px;height:48px;border-radius:50%;
+  object-fit:cover; margin-bottom:1rem;
+  border:1px solid var(--gborder);
 }
+.about-card h3{ font-size:1rem; font-weight:700; margin-bottom:0.5rem; }
+.about-card p{ font-size:0.78rem; color:var(--dim); line-height:1.7; }
 
-.about-card h3{
-    color:#ffffff;
-    margin-bottom:8px;
-    text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+/* ── SKILLS ────────────────────────────────────────────── */
+#skills{ background: var(--bg2); }
+.skills-row{
+  display: flex; flex-wrap:wrap; gap: 1.2rem;
+  justify-content: center; margin-top: 1rem;
 }
-
-.about-card p{
-    color:#ffffff;
-    font-size:14px;
+.skill-pill{
+  display: flex; flex-direction:column; align-items:center; gap:0.6rem;
+  background: var(--card-bg);
+  border: 1px solid var(--gborder);
+  border-radius: var(--radius);
+  padding: 1.5rem 1.8rem;
+  min-width: 130px;
+  transition: all 0.3s;
 }
-
-/* EXPERIENCE CARDS */
-
-.experience-cards{
-display:flex;
-gap:30px;
-flex-wrap:wrap;
-justify-content:center;
-margin-top:40px;
+.skill-pill:hover{
+  border-color: rgba(255,61,110,0.4);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(255,61,110,0.15);
 }
+.skill-pill img{ width:64px;height:64px;object-fit:contain; filter:drop-shadow(0 0 8px rgba(255,255,255,0.1)); }
+.skill-pill span{ font-size:0.75rem;font-weight:600;color:var(--dim); }
 
-.exp-card{
-width:390px;
-border-radius:20px;
-overflow:visible;
-
-
-background: rgba(255,255,255,0.08);
-backdrop-filter: blur(18px);
-border:1px solid rgba(255,255,255,0.15);
-
-box-shadow:
-0 10px 30px rgba(0,0,0,0.4),
-inset 0 1px 1px rgba(255,255,255,0.2);
-
-display:flex;
-flex-direction:column;
-align-items:center;
-text-align:center;
-padding-bottom:35px;
+/* ── FEATURE CARDS (3 like Lane) ──────────────────────── */
+.features-grid{
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 1.5rem; margin-top: 1rem;
 }
-
-.exp-card h3{
-color:#ffffff;
-margin-bottom:10px;
-font-size:22px;
+.feat-card{
+  background: var(--card-bg);
+  border: 1px solid var(--gborder);
+  border-radius: var(--radius);
+  padding: 2rem 1.8rem;
+  backdrop-filter: blur(16px);
+  transition: all 0.3s;
 }
-
-.exp-card p{
-font-size:13px;
-color:#ffffff;
-line-height:1.5;
-padding:0 20px;
+.feat-card.featured{
+  background: linear-gradient(135deg, var(--pink) 0%, var(--magenta) 100%);
+  border-color: transparent;
+  box-shadow: 0 20px 60px rgba(255,61,110,0.35);
 }
-
-.exp-card img{
-width:100%;
-height:200px;
-object-fit:cover;
-border-radius:20px 20px 0 0;
-margin-bottom:20px;
+.feat-card:not(.featured):hover{
+  border-color: rgba(255,61,110,0.35);
+  transform:translateY(-6px);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.4);
 }
-
-.exp-card p.exp-main{
-margin-top:10px;
-font-size:15px;
-color:#ff7a18;
+.feat-icon{
+  width:40px;height:40px;border-radius:50%;
+  background: rgba(255,255,255,0.12);
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.1rem; margin-bottom:1.2rem;
 }
-
-.exp-card p.exp-detail{
-margin-top:6px;
-font-size:14px;
-color:#bbb;
+.feat-card.featured .feat-icon{ background:rgba(255,255,255,0.25); }
+.feat-card h3{ font-size:1.05rem;font-weight:700;margin-bottom:0.5rem; }
+.feat-card p{ font-size:0.8rem;color:var(--dim);line-height:1.7;margin-bottom:1.2rem; }
+.feat-card.featured p{ color:rgba(255,255,255,0.8); }
+.feat-link{
+  font-size:0.78rem;font-weight:600;color:var(--pink);
+  text-decoration:none; display:inline-flex;align-items:center;gap:0.4rem;
+  transition:gap 0.2s;
 }
+.feat-link:hover{ gap:0.7rem; }
+.feat-card.featured .feat-link{ color:#fff; }
 
-.exp-card p.exp-type{
-margin-top:6px;
-font-size:14px;
-color:#9aa0ff;
+/* ── PROJECT CARDS ─────────────────────────────────────── */
+.proj-grid{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px,1fr));
+  gap: 1.5rem; margin-top: 1rem;
 }
-
-/* SKILLS */
-
-#skills, #experience, #contact, #prototypes, .models{
-display:flex;
-flex-direction:column;
-align-items:center;
-text-align:center;
+.proj-card{
+  background: var(--card-bg);
+  border: 1px solid var(--gborder);
+  border-radius: var(--radius);
+  overflow: hidden; text-decoration:none; color:inherit;
+  display:block; transition:all 0.3s;
 }
-.models{
-max-width:1200px;
-margin:auto;
+.proj-card:hover{ border-color:rgba(255,61,110,0.4); transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,0.5); }
+.proj-card img{ width:100%;height:190px;object-fit:cover;display:block; transition:transform 0.5s; }
+.proj-card:hover img{ transform:scale(1.04); }
+.proj-body{ padding:1.4rem 1.5rem; }
+.proj-tag-pill{
+  display:inline-block;
+  background:rgba(255,61,110,0.12);
+  border:1px solid rgba(255,61,110,0.25);
+  border-radius:999px;
+  padding:0.2rem 0.75rem;
+  font-size:0.68rem;font-weight:600;color:var(--pink);
+  margin-bottom:0.6rem; text-transform:uppercase;
 }
-.skills{
-display:flex;
-gap:20px;
-flex-wrap:wrap;
-justify-content:center;
-margin-top:40px;
-
+.proj-card h3{ font-size:1.05rem;font-weight:700;margin-bottom:0.4rem; }
+.proj-card p{ font-size:0.78rem;color:var(--dim);line-height:1.6; }
+.proj-meta{
+  display:flex;gap:1.2rem;margin-top:1rem;padding-top:0.8rem;
+  border-top:1px solid var(--gborder);
+  font-size:0.7rem;color:var(--dim);
 }
+.proj-meta span{ color:var(--pink);font-weight:600; }
 
-.skill {
-    padding: 20px 30px;
-    border-radius: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    /* Sombra */
-    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-    transition: 0.3s;
+/* ── GALLERY SLIDERS ───────────────────────────────────── */
+.slider-wrap{ position:relative;overflow:hidden;margin-top:1.5rem; }
+.slider-wrap::before,.slider-wrap::after{
+  content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none;
 }
-.skill img{
-width:140px;
-height:140px;
-margin-bottom:10px;
-}
-/* Opcional: efecto al pasar el mouse */
-.skill:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
-
-/* EXPERIENCE */
-
-
-/* CONTACT */
-
-.contact{
-max-width:400px;
-margin:auto;
-}
-
-input,textarea{
-width:100%;
-padding:10px;
-margin:10px 0;
-border:none;
-border-radius:6px;
-}
-
-button{
-background: linear-gradient(90deg,#5a8cff,#caa6ff,#ff7aa8);
-border:none;
-padding:12px;
-color:white;
-border-radius:24px;
-cursor:pointer;
-font-weight:bold;
-transition:0.25s;
-}
-
-button:hover{
-transform:scale(1.05);
-box-shadow:0 0 20px rgba(255,122,168,0.6);
-}
+.slider-wrap::before{ left:0;background:linear-gradient(to right,var(--bg),transparent); }
+.slider-wrap::after{ right:0;background:linear-gradient(to left,var(--bg),transparent); }
 .slider{
-display:flex;
-gap:20px;
-overflow-x:auto;
-scroll-behavior:smooth;
-
-padding-top:20px;
-padding-bottom:20px;
-
-width:100%;
-cursor:grab;
+  display:flex;gap:1.2rem;
+  overflow-x:auto;scroll-behavior:smooth;
+  cursor:grab;padding-bottom:0.5rem;
 }
-.slider-card{
-transition:transform .25s ease, box-shadow .25s ease;
+.slider:active{ cursor:grabbing; }
+.slider::-webkit-scrollbar{ height:4px; }
+.slider::-webkit-scrollbar-track{ background:var(--bg2); }
+.slider::-webkit-scrollbar-thumb{ background:var(--pink);border-radius:2px; }
+.s-card{
+  min-width:220px;flex-shrink:0;
+  background:var(--card-bg);
+  border:1px solid var(--gborder);
+  border-radius:var(--radius);
+  overflow:hidden;
+  transition:all 0.3s;
 }
+.s-card:hover{ border-color:rgba(255,61,110,0.4);transform:translateY(-5px); }
+.s-card img{ width:100%;height:150px;object-fit:cover;display:block; }
+.s-card-body{ padding:0.9rem 1rem; }
+.s-card h3{ font-size:0.88rem;font-weight:700;margin-bottom:0.2rem; }
+.s-card p{ font-size:0.72rem;color:var(--dim); }
 
-.slider-card:hover{
-transform:translateY(-10px) scale(1.05);
-box-shadow:0 10px 40px rgba(0,0,0,0.6);
+/* ── CONTACT ───────────────────────────────────────────── */
+#contact{
+  background: var(--bg2);
+  display: grid; grid-template-columns:1fr 1fr;
+  gap:4rem; align-items:center;
 }
+.contact-email-link{
+  display:inline-block;
+  font-size:1.1rem;font-weight:600;
+  color:var(--pink); text-decoration:none;
+  border-bottom:1px solid rgba(255,61,110,0.35);
+  padding-bottom:0.4rem; margin-bottom:2rem;
+  transition:border-color 0.3s;
+}
+.contact-email-link:hover{ border-color:var(--pink); }
+.social-row{ display:flex;gap:0.8rem;flex-wrap:wrap; }
+.social-btn{
+  width:42px;height:42px;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--glass);border:1px solid var(--gborder);
+  border-radius:50%;color:var(--dim);text-decoration:none;font-size:1rem;
+  transition:all 0.25s;
+}
+.social-btn:hover{ color:#fff;border-color:var(--pink);background:rgba(255,61,110,0.12);transform:translateY(-3px); }
+.contact-form{ display:flex;flex-direction:column;gap:1.2rem; }
+.form-group{ display:flex;flex-direction:column;gap:0.35rem; }
+.form-label{ font-size:0.72rem;font-weight:600;color:var(--pink);letter-spacing:0.08em;text-transform:uppercase; }
+.form-input,.form-textarea{
+  background:var(--glass);
+  border:1px solid var(--gborder);
+  border-radius:10px;
+  padding:0.75rem 1rem;
+  color:var(--white);font-family:'Outfit',sans-serif;font-size:0.88rem;
+  outline:none; transition:border-color 0.25s; resize:none;
+}
+.form-input:focus,.form-textarea:focus{ border-color:rgba(255,61,110,0.6); }
+.form-input::placeholder,.form-textarea::placeholder{ color:rgba(255,255,255,0.25); }
+.form-textarea{ min-height:100px; }
 
-.slider{
-cursor:grab;
+/* ── FOOTER ────────────────────────────────────────────── */
+footer{
+  padding:1.8rem 5%;
+  border-top:1px solid var(--gborder);
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:0.78rem;color:var(--dim);
 }
+footer a{ color:var(--dim);text-decoration:none; }
+footer a:hover{ color:var(--pink); }
 
-.slider:active{
-cursor:grabbing;
+/* ── ANIMATIONS ────────────────────────────────────────── */
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(28px);}
+  to{opacity:1;transform:translateY(0);}
 }
-.slider::-webkit-scrollbar{
-height:8px;
+@keyframes fadeIn{
+  from{opacity:0;} to{opacity:1;}
 }
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-14px);}
+}
+@keyframes waveDrift{
+  0%{transform:translateX(0) scaleY(1);}
+  50%{transform:translateX(-2%) scaleY(1.03);}
+  100%{transform:translateX(0) scaleY(1);}
+}
+.wave-hero svg{ animation:waveDrift 8s ease-in-out infinite; }
 
-.slider::-webkit-scrollbar-thumb{
-background: linear-gradient(90deg,#5a8cff,#caa6ff,#ff7aa8);
-border-radius:10px;
-}
+/* ── REVEAL ────────────────────────────────────────────── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.75s,transform 0.75s;}
+.reveal.visible{opacity:1;transform:translateY(0);}
+.d1{transition-delay:0.1s;}.d2{transition-delay:0.2s;}.d3{transition-delay:0.3s;}
+.d4{transition-delay:0.4s;}.d5{transition-delay:0.5s;}
 
-.slider-card{
-min-width:250px;
-flex-shrink:0;
-background:rgba(255,255,255,0.08);
-border:none;
-border-radius:12px;
-padding:15px;
-transition:0.3s ease;
-}
-
-.slider-card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 20px var(--main-color);
-}
-
-.slider-card img{
-width:100%;
-height:180px;
-object-fit:cover;
-border-radius:10px;
-margin-bottom:10px;
-}
-/* TESTIMONIAL CARD */
-
-.testimonial{
-position:relative;
-text-align:center;
-padding-top:40px;
-
-animation: float 6s ease-in-out infinite;
-
-}
-
-.quote{
-position:absolute;
-top:-10px;
-left:20px;
-font-size:65px;
-color: #ffffff;
-font-weight:bold;
-font-family: "Playfair Display", serif;
-
-}
-
-.testimonial-text{
-color:#ddd;
-font-size:14px;
-line-height:1.6;
-margin-bottom:20px;
-padding:0 10px;
-}
-
-.testimonial-avatar{
-width:60px;
-height:60px;
-border-radius:50%;
-margin-top:10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.6);
-}
-.testimonial-user{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:12px;
-margin-top:-35px;
-}
-
-.testimonial-name{
-margin-top:35px;
-font-weight:bold;
-color:#ff7a18;
-}
-section h1 {
-    text-shadow: 2px 2px 6px rgba(0,0,0,0.3);
-}
-.hero-divider {
-    width: 450px; /* ancho de la línea */
-    height: 2px; /* grosor */
-    background-color: #ff7a18; /* color principal */
-    margin: 20px 0; /* espacio arriba y abajo */
-    border: none;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    
-    border-radius: 3px;
-}
-
-.gradient-text{
-background: linear-gradient(90deg,#5a8cff,#caa6ff,#ff7aa8,#ff7a18);
--webkit-background-clip: text;
--webkit-text-fill-color: transparent;
-background-clip: text;
-}
-h1, h2, h3, h4, h5, h6, p, a, span{
-
+/* ── RESPONSIVE ────────────────────────────────────────── */
+@media(max-width:900px){
+  header{padding:1rem 4%;}
+  nav a:not(.nav-cta){display:none;}
+  #home{padding:8rem 4% 5rem;}
+  .hero-grid{grid-template-columns:1fr; }
+  .hero-right{order:-1;align-items:center;}
+  .trusted-inner{grid-template-columns:1fr;}
+  .features-grid{grid-template-columns:1fr;}
+  #contact{grid-template-columns:1fr;gap:2.5rem;}
+  section.pad{padding:4rem 4%;}
+  .trusted{padding:3rem 4%;}
 }
 </style>
 </head>
-
 <body>
 
+<script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+
+<!-- ═══ NAV ══════════════════════════════════════════════ -->
 <header>
-
-<div class="logo">daniel.</div>
-
-<nav>
-<a href="#home" class="active">Home</a>
-<a href="#about">About Me</a>
-<a href="#skills">Skills</a>
-<a href="#experience">Experience</a>
-<a href="#prototypes">Prototypes</a>
-<a href="#contact">Contact</a>
-<a href="#models">Gallery</a>
-</nav>
-
+  <a href="#home" class="logo"><span class="logo-dot">+</span> Daniel.</a>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#prototypes">Prototypes</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact" class="nav-cta">Hire Me ↗</a>
+  </nav>
 </header>
 
+<!-- ═══ HERO ══════════════════════════════════════════════ -->
 <section id="home">
 
-<div class="hero">
+  <!-- Animated wave background -->
+  <div class="wave-hero">
+    <svg viewBox="0 0 1440 520" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <defs>
+        <linearGradient id="wg1" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="#ff3d6e" stop-opacity="0.85"/>
+          <stop offset="35%"  stop-color="#e040a0" stop-opacity="0.8"/>
+          <stop offset="65%"  stop-color="#9b59f5" stop-opacity="0.75"/>
+          <stop offset="100%" stop-color="#1e90ff" stop-opacity="0.5"/>
+        </linearGradient>
+        <linearGradient id="wg2" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="#ff7b54" stop-opacity="0.6"/>
+          <stop offset="50%"  stop-color="#ff3d6e" stop-opacity="0.7"/>
+          <stop offset="100%" stop-color="#9b59f5" stop-opacity="0.4"/>
+        </linearGradient>
+        
+      </defs>
+      <!-- Wave 1 - thick main -->
+      <path d="M-100,300 C150,180 300,420 600,300 C900,180 1100,420 1540,280 L1540,520 L-100,520Z"
+            fill="url(#wg1)" filter="url(#wblur)" opacity="0.7"/>
+      <!-- Wave 2 - thinner top -->
+      <path d="M-100,340 C200,220 400,460 700,320 C1000,180 1200,400 1540,300 L1540,520 L-100,520Z"
+            fill="url(#wg2)" filter="url(#wblur)" opacity="0.5"/>
+      <!-- Wave 3 - subtle highlight -->
+      <path d="M-100,380 C250,300 500,500 800,360 C1100,220 1300,440 1540,340 L1540,520 L-100,520Z"
+            fill="#ff3d6e" filter="url(#wblur)" opacity="0.2"/>
+    </svg>
+  </div>
 
-<div class="hero-text">
+  <div class="hero-grid">
+    <!-- LEFT -->
+    <div>
+      <!-- Badges -->
+      <div class="badge-row">
+        <div class="badge">
+          <div class="badge-avatars">
+            <img src="images.png" alt="user"/>
+            <img src="images2.png" alt="user"/>
+            <img src="images3.png" alt="user"/>
+          </div>
+          50+ Clients
+        </div>
+        <div class="badge">
+          <span class="badge-star">★</span> 5.0 Rating
+        </div>
+        <div class="badge">
+          <span class="dot"></span> Available for work
+        </div>
+      </div>
 
-<h3><span>Hello, I am</span>&nbsp;&nbsp;&nbsp;Daniel</h3>
-<h1>GameDeveloper</h1>
+      <h1 class="hero-title">
+        Level Up Your<br>
+        Game With <span class="grad">Next-Level</span><br>
+        Unity <span class="grad">Development</span>
+      </h1>
 
-<p>I have been developing video games in Unity for over 5 years.</p>
+      <p class="hero-sub">
+        Build smarter, ship faster. I craft polished Unity games with
+        real-time mechanics and custom C# scripts — tailored for
+        indie studios and mobile-first studios alike.
+      </p>
 
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Hire Me ↗</a>
+        <a href="#experience" class="btn-outline">View Work</a>
+      </div>
 
-<a class="btn">Hire Me</a>
+      <!-- Testimonial -->
+      <div class="hero-testimonial" style="margin-top:2rem;max-width:440px;opacity:0;animation:fadeUp 0.8s 0.9s forwards">
+        <span class="quote">"</span>
+        Working with Daniel was an amazing experience. His Unity and C# skills allowed our project to reach a whole new level of polish and gameplay quality.
+        <div class="testi-user">
+          <img src="images.png" alt="Andrea Villagran"/>
+          <span>Andrea Villagran</span>
+        </div>
+      </div>
+    </div>
 
-
-<div class="card testimonial">
-
-<div class="quote">“</div>
-
-<p class="testimonial-text">
-Working with Daniel was an amazing experience. 
-His Unity and C# skills allowed our project to reach a new level 
-of polish and gameplay quality. 
-</p>
-
-<div class="testimonial-user">
-<img src="images.png" class="testimonial-avatar">
-<p class="testimonial-name">Carol Abbott</p>
+    <!-- RIGHT -->
+    <div class="hero-right">
+      <img src="asta.png" alt="Daniel" class="hero-photo"/>
+      <!-- mini chart card -->
+      <div class="mini-card">
+        <div class="mini-card-label">Projects Shipped</div>
+        <div class="mini-card-val">
+  <span id="gameCounter">0</span>+ Games 
+  <span class="up">↑ +8 this year</span>
 </div>
+        <div class="sparkline">
+          <svg viewBox="0 0 200 44" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <linearGradient id="sg" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#ff3d6e" stop-opacity="0.4"/>
+                <stop offset="100%" stop-color="#ff3d6e" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path d="M0,35 C20,30 40,38 60,25 C80,12 100,28 120,18 C140,8 160,22 180,10 L200,10 L200,44 L0,44Z" fill="url(#sg)"/>
+            <path d="M0,35 C20,30 40,38 60,25 C80,12 100,28 120,18 C140,8 160,22 180,10 L200,10" fill="none" stroke="#ff3d6e" stroke-width="2"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
 
-</div>
-
-</div>
-
-<div class="hero-img">
-<img src="asta.png">
-</div>
-
-</div>
-
-<div class="socials">
-
-<a href="https://discord.gg/TUCODIGO" target="_blank">
-<i class="fa-brands fa-discord"></i>
+  <!-- Socials at bottom -->
+  <div class="hero-socials">
+    <a href="https://wa.me/50250718130" target="_blank" class="social-pill">
+      <i class="fa-brands fa-whatsapp"></i> WhatsApp
+    </a>
+    <a href="https://mail.google.com/mail/?view=cm&to=danielesco2004@gmail.com" class="social-pill">
+      <i class="fa-solid fa-envelope"></i> Email
+    </a>
+<a href="https://www.facebook.com/wizardking011/" target="_blank" class="social-pill">
+  <i class="fa-brands fa-facebook-f"></i> Facebook
 </a>
+  </div>
+</section>
 
-<a href="https://wa.me/50212345678" target="_blank">
-<i class="fa-brands fa-whatsapp"></i>
+<!-- ═══ TRUSTED ════════════════════════════════════════════ -->
+<div class="trusted reveal">
+  <div class="trusted-inner">
+    <div>
+      <h2 class="trusted-title">
+        Trusted By <span class="grad">Game Studios</span><br>
+        Designed For <span class="grad">Success</span>
+      </h2>
+    </div>
+    <p class="trusted-desc">
+      Join studios and indie developers who trust my Unity expertise to take projects from prototype to published. From polished mechanics to custom shaders, I've got every layer covered.
+    </p>
+  </div>
+</div>
+
+<!-- ═══ ABOUT ══════════════════════════════════════════════ -->
+<section id="about" class="pad">
+  <div class="center reveal">
+    <span class="section-tag">About Me</span>
+    <h2 class="section-title">Who Is <span class="grad">Daniel?</span></h2>
+    <p class="section-sub">Game developer with 5+ years building Unity games — from movement systems to full solo releases. I work at the intersection of code, art, and game feel.</p>
+  </div>
+
+  <div class="about-grid">
+    <div class="about-card reveal d1">
+      <model-viewer 
+  src="modelo.glb"
+  alt="3D Model"
+  auto-rotate
+  camera-controls
+  disable-zoom
+  style="width:48px; height:48px; border-radius:50%; border:1px solid var(--gborder);">
+</model-viewer>
+      <h3>Tech Skills</h3>
+      <p>Unity, C#, Photoshop, Illustrator, Visual Studio, Blender.</p>
+    </div>
+    <div class="about-card reveal d2">
+      <img src="soft.png" alt="Soft Skills"/>
+      <h3>Soft Skills</h3>
+      <p>Teamwork, Time Management, Problem Solving, Communication, Adaptability.</p>
+    </div>
+    <div class="about-card reveal d3">
+      <img src="u.png" alt="Education"/>
+      <h3>Education</h3>
+      <p>Master's in Engineering — Computer Science. Bachelor's in Computer Science.</p>
+    </div>
+    <div class="about-card reveal d4">
+      <img src="lang.png" alt="Languages"/>
+      <h3>Languages</h3>
+      <p>English ★★★★★<br>Spanish ★★★★★<br>Italian ★★★★☆<br>Indonesian ★★★☆☆</p>
+    </div>
+    <div class="about-card reveal d5">
+      <img src="unity.png" alt="Experience"/>
+      <h3>Experience</h3>
+      <p>50+ shipped games. Platformers, RPGs, Strategy, Action — shaders, models, custom C# scripts.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═════════════════════════════════════════════ -->
+<section id="skills" class="pad center">
+  <span class="section-tag reveal">Tech Stack</span>
+  <h2 class="section-title reveal d1">My Core <span class="grad">Skills</span></h2>
+  <p class="section-sub reveal d2">Every tool in my arsenal — battle-tested across 80+ projects.</p>
+
+  <div class="skills-row reveal d2">
+    <div class="skill-pill"><img src="unity2.png" alt="Unity"/><span>Unity</span></div>
+    <div class="skill-pill"><img src="v.png" alt="Sony Vegas"/><span>Sony Vegas</span></div>
+    <div class="skill-pill"><img src="blender.png" alt="Blender"/><span>Blender</span></div>
+    <div class="skill-pill"><img src="ps.png" alt="Photoshop"/><span>Photoshop</span></div>
+    <div class="skill-pill"><img src="c.png" alt="C#"/><span>C#</span></div>
+  </div>
+</section>
+
+<!-- ═══ FEATURES (like Lane 3-col) ════════════════════════ -->
+<section class="pad">
+  <div class="center reveal">
+    <span class="section-tag">What I Offer</span>
+    <h2 class="section-title">All-In-One <span class="grad">Game Dev</span></h2>
+    <p class="section-sub">From concept to Play Store — I cover every layer of production.</p>
+  </div>
+
+  <div class="features-grid reveal d1">
+    <div class="feat-card">
+      <div class="feat-icon">⚙️</div>
+      <h3>Custom C# Scripts</h3>
+      <p>Movement systems, AI behavior, shaders, inventory — bespoke code built for your exact game design.</p>
+      <a href="#contact" class="feat-link">Learn More →</a>
+    </div>
+    <div class="feat-card featured">
+      <div class="feat-icon">🎮</div>
+      <h3>Full Game Builds</h3>
+      <p>Access live game development from prototype to polished release, for informed shipping decisions.</p>
+      <a href="#prototypes" class="feat-link">See Examples →</a>
+    </div>
+    <div class="feat-card">
+      <div class="feat-icon">🛡️</div>
+      <h3>Reliable Delivery</h3>
+      <p>Ship confidently with my multi-stage review process, clean code architecture and milestone tracking.</p>
+      <a href="#contact" class="feat-link">Learn More →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ EXPERIENCE ═════════════════════════════════════════ -->
+<section id="experience" class="pad" style="background:var(--bg2);">
+  <div class="reveal">
+    <span class="section-tag">Published Work</span>
+    <h2 class="section-title">Shipped <span class="grad">Titles</span></h2>
+    <p class="section-sub">Freelance contributions to games live on the Play Store right now.</p>
+  </div>
+  <div class="proj-grid">
+    <a href="https://play.google.com/store/apps/details?id=com.superbear" target="_blank" class="proj-card reveal d1">
+      <img src="bear.png" alt="Super Bear Adventure"/>
+      <div class="proj-body">
+        <span class="proj-tag-pill">Platformer · Play Store</span>
+        <h3>Super Bear Adventure</h3>
+        <p>3D exploration game inspired by '90s classics. Save the kingdom from the purple honey threat as Baaren.</p>
+        <div class="proj-meta"><div>Role <span>C# Movement</span></div><div>Type <span>Freelance</span></div></div>
+      </div>
+    </a>
+    <div class="proj-card reveal d2">
+      <img src="Identity.png" alt="Identity V"/>
+      <div class="proj-body">
+        <span class="proj-tag-pill">Horror · Play Store</span>
+        <h3>Identity V</h3>
+        <p>Asymmetric 1v4 mobile horror with gothic visuals, randomized maps, multiple playable characters.</p>
+        <div class="proj-meta"><div>Role <span>C# Movement</span></div><div>Type <span>Freelance</span></div></div>
+      </div>
+    </div>
+    <div class="proj-card reveal d3">
+      <img src="stickman.png" alt="Stickman Battle Simulator"/>
+      <div class="proj-body">
+        <span class="proj-tag-pill">Strategy · Play Store</span>
+        <h3>Stickman Battle Simulator</h3>
+        <p>Command stickman armies with melee, guns, and sci-fi weapons in this free-to-play simulator.</p>
+        <div class="proj-meta"><div>Role <span>C# Movement</span></div><div>Type <span>Freelance</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROTOTYPES ══════════════════════════════════════════ -->
+<section id="prototypes" class="pad">
+  <div class="reveal">
+    <span class="section-tag">Solo Dev</span>
+    <h2 class="section-title">Personal <span class="grad">Projects</span></h2>
+    <p class="section-sub">Built from scratch — my own game ideas, fully developed.</p>
+  </div>
+  <div class="proj-grid">
+    <div class="proj-card reveal d1">
+      <img src="goomie.png" alt="Goomie Gum"/>
+      <div class="proj-body">
+        <span class="proj-tag-pill">Party · Prototype</span>
+        <h3>Goomie Gum</h3>
+        <p>Stumble Guys–inspired party game: reach the finish line and claim the trophy!</p>
+        <div class="proj-meta"><div>Stack <span>Unity · C#</span></div><div>Type <span>Solo</span></div></div>
+      </div>
+    </div>
+    <div class="proj-card reveal d2">
+      <img src="tung.png" alt="Tung Tung Sahur"/>
+      <div class="proj-body">
+        <span class="proj-tag-pill">Horror · Prototype</span>
+        <h3>Tung Tung Sahur Terror</h3>
+        <p>Escape Tung Tung Sahur in a haunted house — if you survive long enough.</p>
+        <div class="proj-meta"><div>Stack <span>Unity · C#</span></div><div>Type <span>Solo</span></div></div>
+      </div>
+    </div>
+    <div class="proj-card reveal d3">
+      <img src="skyland.png" alt="SkyLand"/>
+      <div class="proj-body">
+        <span class="proj-tag-pill">Platformer · Prototype</span>
+        <h3>SkyLand (ToyBox)</h3>
+        <p>3D Mario-style mechanics prototype — obstacles, enemies and power-ups coming soon.</p>
+        <div class="proj-meta"><div>Stack <span>Unity · C#</span></div><div>Type <span>Solo</span></div></div>
+      </div>
+    </div>
+    <div class="proj-card reveal d4">
+      <img src="adventure.png" alt="Strandzha"/>
+      <div class="proj-body">
+        <span class="proj-tag-pill">Adventure · Demo</span>
+        <h3>Strandzha Adventures 3D</h3>
+        <p>Technical jungle adventure demo showcasing traversal and basic mechanics.</p>
+        <div class="proj-meta"><div>Stack <span>Unity · C#</span></div><div>Type <span>Solo</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ GALLERY ═════════════════════════════════════════════ -->
+<section id="gallery" class="pad" style="background:var(--bg2);">
+  <div class="reveal">
+    <span class="section-tag">Gallery</span>
+    <h2 class="section-title">3D <span class="grad">Models</span></h2>
+  </div>
+  <div class="slider-wrap reveal d1">
+    <div class="slider">
+      <div class="s-card"><img src="model.jpeg" alt="Fantasy Sword"/><div class="s-card-body"><h3>Fantasy Sword</h3><p>Game ready low poly</p></div></div>
+      <div class="s-card"><img src="model.jpeg" alt="Stylized Tree"/><div class="s-card-body"><h3>Stylized Tree</h3><p>Mobile optimized prop</p></div></div>
+      <div class="s-card"><img src="model.jpeg" alt="Crate Prop"/><div class="s-card-body"><h3>Crate Prop</h3><p>Environment asset</p></div></div>
+      <div class="s-card"><img src="model.jpeg" alt="Fantasy Sword"/><div class="s-card-body"><h3>Fantasy Sword</h3><p>Game ready low poly</p></div></div>
+      <div class="s-card"><img src="model.jpeg" alt="Stylized Tree"/><div class="s-card-body"><h3>Stylized Tree</h3><p>Mobile optimized prop</p></div></div>
+      <div class="s-card"><img src="model.jpeg" alt="Crate Prop"/><div class="s-card-body"><h3>Crate Prop</h3><p>Environment asset</p></div></div>
+    </div>
+  </div>
+
+  <h2 class="section-title reveal" style="margin-top:3.5rem">Custom <span class="grad">Shaders</span></h2>
+  <div class="slider-wrap reveal d1">
+    <div class="slider">
+      <div class="s-card"><img src="shader1.png" alt="Water Shader"/><div class="s-card-body"><h3>Water Shader</h3><p>Realistic animated water</p></div></div>
+      <div class="s-card"><img src="shader2.png" alt="Fire Shader"/><div class="s-card-body"><h3>Fire Shader</h3><p>Stylized flame effect</p></div></div>
+      <div class="s-card"><img src="shader3.png" alt="Hologram Shader"/><div class="s-card-body"><h3>Hologram Shader</h3><p>Sci-fi holographic material</p></div></div>
+      <div class="s-card"><img src="shader1.png" alt="Water Shader"/><div class="s-card-body"><h3>Water Shader</h3><p>Realistic animated water</p></div></div>
+      <div class="s-card"><img src="shader2.png" alt="Fire Shader"/><div class="s-card-body"><h3>Fire Shader</h3><p>Stylized flame effect</p></div></div>
+      <div class="s-card"><img src="shader3.png" alt="Hologram Shader"/><div class="s-card-body"><h3>Hologram Shader</h3><p>Sci-fi holographic material</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═════════════════════════════════════════════ -->
+<section id="contact" class="pad">
+  <div class="reveal">
+    <span class="section-tag">Get In Touch</span>
+    <h2 class="section-title">Let's Build <span class="grad">Together.</span></h2>
+    <p class="section-sub">Ready to ship your next game? Drop me a message and let's get started.</p>
+    <a href="mailto:danielesco2004@gmail.com" class="contact-email-link">danielesco2004@gmail.com</a>
+    <div class="social-row">
+      <a href="https://wa.me/50250718130" target="_blank" class="social-btn"><i class="fa-brands fa-whatsapp"></i></a>
+      <a href="https://mail.google.com/mail/?view=cm&to=danielesco2004@gmail.com" class="social-btn"><i class="fa-solid fa-envelope"></i></a>
+<a href="https://www.facebook.com/wizardking011/" target="_blank" class="social-btn">
+  <i class="fa-brands fa-facebook-f"></i>
 </a>
-
-<a href="https://linkedin.com/in/tuusuario" target="_blank">
-<i class="fa-brands fa-linkedin"></i>
-</a>
-
-<a href="mailto:correo@email.com">
-<i class="fa-solid fa-envelope"></i>
-</a>
-
-</div>
-</section>
-
-<section id="about">
-
-<h1>About Me</h1>
-
-<div class="about-cards">
-    <div class="about-card">
-        <img src="tech.png" alt="Example 1">
-        <h3>Skills</h3>
-        <p>Unity, C#, Photoshop, Illustrator, Visual Studio, Blender.</p>
     </div>
-    <div class="about-card">
-        <img src="soft.png" alt="Example 2">
-        <h3>Soft Skills</h3>
-        <p>Teamwork, Time Management, Problem Solving, Communication, Adaptability</p>
+  </div>
+
+  <form class="contact-form reveal d2" onsubmit="handleSubmit(event)">
+    <div class="form-group">
+      <label class="form-label">Your Name</label>
+      <input class="form-input" type="text" name="from_name" placeholder="John Doe"/>
     </div>
-    <div class="about-card">
-        <img src="u.png" alt="Example 3">
-        <h3>Education</h3>
-        <p>Master's Degree in Engineering with a Specialization in Computer Science. Bachelor’s Degree in Computer Science.</p>
+    <div class="form-group">
+      <label class="form-label">Email Address</label>
+      <input class="form-input" type="email" name="email" placeholder="john@studio.com"/>
     </div>
-    <div class="about-card">
-        <img src="lang.png" alt="Example 4">
-        <h3>Languages</h3>
-        <p>English ★★★★★</p>
-        <p>Spanish ★★★★★</p>
-        <p>Italian★★★★☆</p>
-        <p>Indonesian★★★☆☆</p>
+    <div class="form-group">
+      <label class="form-label">Message</label>
+      <textarea class="form-textarea" name="message" placeholder="Tell me about your project…"></textarea>
     </div>
-    <div class="about-card">
-        <img src="unity.png" alt="Example 5">
-        <h3>Experience</h3>
-        <p>50+ shipped games, 80+ projects participated in, including Platformers, RPGs, Strategy, Action, Infinite Runners; experience with shaders, models, and custom C# scripts.</p>
-    </div>
-</div>
-
+    <button type="submit" class="btn-primary" style="align-self:flex-start;border:none;">
+      Send Message ↗
+    </button>
+  </form>
 </section>
 
-<section id="skills">
-
-<h1>Skills</h1>
-
-<div class="skills">
-<div class="skill">
-<img src="unity2.png">
-<p>Unity</p>
-</div>
-<div class="skill">
-<img src="v.png">
-<p>Sony vegas</p>
-</div>
-<div class="skill">
-<img src="blender.png">
-<p>Blender</p>
-</div>
-<div class="skill">
-<img src="ps.png">
-<p>Photoshop</p>
-</div>
-<div class="skill">
-<img src="c.png">
-<p>C#</p>
-</div>
-
-
-
-</div>
-
-</section>
-
-<section id="experience">
-
-<h1>Experience</h1>
-
-<div class="experience-cards">
-
-<div class="exp-card">
-
-<img src="bear.png" alt="Super Bear Adventure">
-
-                    <h3>Super Bear Adventure</h3>
-                    <p>A 3D exploration game inspired by ’90s titles. Play as Baaren, a brave bear on a mission to save the kingdom from the threat of purple honey, discovering secrets, collectibles, vehicles.</p>
-
-<p class="exp-main">Available only on Playstore</p>
-<p class="exp-detail">C# Role: Movement development.</p>
-<p class="exp-type">Freelance collaboration</p>
-
-</div>
-
-<div class="exp-card">
-
-<img src="Identity.png" alt="Identity V">
-
-<h3>Identity V</h3>
-<p>is an asymmetric 1v4 mobile horror game with gothic visuals, mysterious stories, randomized maps, and multiple characters survive or hunt.</p>
-<p class="exp-main">Available only on Playstore</p>
-<p class="exp-detail">C# Role: Movement development.</p>
-<p class="exp-type">Freelance collaboration</p>
-
-</div>
-
-<div class="exp-card">
-
-<img src="stickman.png" alt="Stickman battle simulator">
-
-<h3>Stickman battle simulator</h3>
-<p>A free battle simulator where players command a stickman army using melee, guns, and sci-fi weapons.</p>
-<p class="exp-main">Available only on Playstore</p>
-<p class="exp-detail">C# Role: Movement development.</p>
-<p class="exp-type">Freelance collaboration</p>
-
-</div>
-
-<div class="exp-card">
-
-<img src="google.png" alt="Google">
-
-<h3>Senior Web Developer</h3>
-<p>Google • 2021 - Present</p>
-<p>Worked on scalable web platforms, performance optimization, and large scale front-end systems.</p>
-
-</div>
-
-
-</div>
-
-</section>
-
-<section id="prototypes">
-
-<h1>Prototypes & Own Work</h1>
-
-<div class="experience-cards">
-
-<div class="exp-card">
-
-<img src="goomie.png">
-
-<div class="project-content">
-<h3>Goomie Gum</h3>
-<p>A game inspired by Stumble Guys: reach the finish line and claim the trophy!</p>
-
-<p class="exp-main">Prototype</p>
-<p class="exp-detail">Unity • C#</p>
-<p class="exp-type">Solo Development</p>
-</div>
-
-</div>
-<div class="exp-card">
-
-<img src="tung.png" alt="Tung tung sahur terror game">
-
-                <div class="project-content">
-                <h3>Tung Tung Sahur Terror Game</h3>
-                <p>A game where you have to escape from Tung Tung Sahur in a haunted house.</p>
-
-<p class="exp-main">Prototype</p>
-<p class="exp-detail">Unity • C#</p>
-<p class="exp-type">Solo Development</p>
-
-</div>
-</div> 
-
-<div class="exp-card">
-
-<img src="skyland.png" alt="SkyLand">
-
-                <div class="project-content">
-                <h3>SkyLand (ToyBox)</h3>
-                <p>A prototype of 3D Mario-style game mechanics, featuring obstacles, with enemies and power-ups coming soon.</p>
-
-<p class="exp-main">Prototype</p>
-<p class="exp-detail">Unity • C#</p>
-<p class="exp-type">Solo Development</p>
-
-</div>
-</div> 
-
-<div class="exp-card">
-
-<img src="adventure.png" alt="Strandzha">
-
-                <div class="project-content">
-                <h3>Strandzha Adventures 3D</h3>
-                <p>A demo of basic technical adventure mechanics in a jungle.</p>
-
-<p class="exp-main">Prototype</p>
-<p class="exp-detail">Unity • C#</p>
-<p class="exp-type">Solo Development</p>
-
-</div>
-</div> 
-
-</div>
-
-
-</section>
-
-<section id="models" class="models">
-
-<h1>3D Models</h1>
-
-<div class="slider">
-
-<div class="slider-card">
-<img src="model.jpeg">
-<h3>Fantasy Sword</h3>
-<p>Game ready low poly weapon</p>
-</div>
-
-<div class="slider-card">
-<img src="model.jpeg">
-<h3>Stylized Tree</h3>
-<p>Mobile optimized prop</p>
-</div>
-
-<div class="slider-card">
-<img src="model.jpeg">
-<h3>Crate Prop</h3>
-<p>Environment asset</p>
-</div>
-
-<div class="slider-card">
-<img src="model.jpeg">
-<h3>Fantasy Sword</h3>
-<p>Game ready low poly weapon</p>
-</div>
-
-<div class="slider-card">
-<img src="model.jpeg">
-<h3>Stylized Tree</h3>
-<p>Mobile optimized prop</p>
-</div>
-
-<div class="slider-card">
-<img src="model.jpeg">
-<h3>Crate Prop</h3>
-<p>Environment asset</p>
-</div>
-
-</div>
-
-<section class="models">
-
-<h1>Shaders</h1>
-
-<div class="slider">
-
-<div class="slider-card">
-<img src="shader1.png">
-<h3>Water Shader</h3>
-<p>Realistic animated water</p>
-</div>
-
-<div class="slider-card">
-<img src="shader2.png">
-<h3>Fire Shader</h3>
-<p>Stylized flame effect</p>
-</div>
-
-<div class="slider-card">
-<img src="shader3.png">
-<h3>Hologram Shader</h3>
-<p>Sci-fi holographic material</p>
-</div>
-
-<div class="slider-card">
-<img src="shader1.png">
-<h3>Water Shader</h3>
-<p>Realistic animated water</p>
-</div>
-
-<div class="slider-card">
-<img src="shader2.png">
-<h3>Fire Shader</h3>
-<p>Stylized flame effect</p>
-</div>
-
-<div class="slider-card">
-<img src="shader3.png">
-<h3>Hologram Shader</h3>
-<p>Sci-fi holographic material</p>
-</div>
-
-</div>
-
-</section>
-
-</section>
-
-
-
-<section id="contact">
-
-<h1>Contact</h1>
-
-<div class="contact">
-
-<input type="text" placeholder="Name">
-<input type="email" placeholder="Email">
-<textarea rows="4" placeholder="Message"></textarea>
-
-<button>Send Message</button>
-
-</div>
-
-</section>
-
+<!-- ═══ FOOTER ══════════════════════════════════════════════ -->
+<footer>
+  <span>© 2025 Daniel. Game Developer</span>
+  <span>Unity · C# · Blender</span>
+  <a href="#home">Back to top ↑</a>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+
+<script>
+(function(){
+  emailjs.init("LlTAmoi5p70T9O767");
+})();
+</script>
+
+<!-- ═══ JS ══════════════════════════════════════════════════ -->
+<script>
+/* Scroll reveal */
+const obs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+}, {threshold:0.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+/* Active nav */
+const secs = document.querySelectorAll('section[id]');
+const links = document.querySelectorAll('nav a[href^="#"]');
+window.addEventListener('scroll', () => {
+  let cur = '';
+  secs.forEach(s => { if(window.scrollY >= s.offsetTop - 130) cur = s.id; });
+  links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + cur));
+});
+
+/* Drag sliders */
+document.querySelectorAll('.slider').forEach(sl => {
+  let down = false, startX, left;
+  sl.addEventListener('mousedown', e => { down=true; startX=e.pageX-sl.offsetLeft; left=sl.scrollLeft; });
+  sl.addEventListener('mouseleave', () => down=false);
+  sl.addEventListener('mouseup', () => down=false);
+  sl.addEventListener('mousemove', e => {
+    if(!down) return; e.preventDefault();
+    sl.scrollLeft = left - (e.pageX - sl.offsetLeft - startX) * 1.5;
+  });
+});
+
+/* Form */
+function handleSubmit(e){
+  e.preventDefault();
+
+emailjs.send("service_7ei7x3a", "template_uicl1tv", {
+  from_name: document.querySelector('input[name="from_name"]').value,
+  email: document.querySelector('input[name="email"]').value,
+  message: document.querySelector('textarea[name="message"]').value
+}).then(() => {
+  const btn = e.target.querySelector('button');
+  btn.textContent = '✓ Sent!';
+  btn.style.background = '#22c55e';
+
+  setTimeout(() => {
+    btn.textContent = 'Send Message ↗';
+    btn.style.background = '';
+  }, 3000);
+
+}, () => {
+  alert("Error al enviar ❌");
+});
+}
+</script>
+<script>
+let counted = false;
+
+function animateCounter() {
+  const counter = document.getElementById("gameCounter");
+  let target = 50;
+  let count = 0;
+  let speed = 60;
+
+  const update = () => {
+    count++;
+    counter.textContent = count;
+    if (count < target) {
+      setTimeout(update, speed);
+    }
+  };
+
+  update();
+}
+
+const observerCounter = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !counted) {
+      counted = true;
+      animateCounter();
+    }
+  });
+}, { threshold: 0.5 });
+
+observerCounter.observe(document.querySelector('.mini-card'));
+</script>
 </body>
 </html>
+
