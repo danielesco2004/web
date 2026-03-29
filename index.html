@@ -386,6 +386,38 @@ section.pad{ padding: 5.5rem 5%; }
 .feat-link:hover{ gap:0.7rem; }
 .feat-card.featured .feat-link{ color:#fff; }
 
+.proj-slider{
+  display: flex;
+  gap: 1.5rem;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-bottom: 0.5rem;
+  overflow-y: hidden;
+}
+
+.proj-slider::-webkit-scrollbar{
+  height: 4px;
+}
+.proj-slider::-webkit-scrollbar-thumb{
+  background: var(--pink);
+  border-radius: 2px;
+}
+
+.proj-slider .proj-card{
+  min-width: 300px;
+  max-width: 300px;
+  flex-shrink: 0;
+}
+.proj-slider{
+  scroll-snap-type: x mandatory;
+}
+
+.proj-card{
+  scroll-snap-align: start;
+
+
+}
+
 /* ── PROJECT CARDS ─────────────────────────────────────── */
 .proj-grid{
   display: grid;
@@ -401,6 +433,7 @@ section.pad{ padding: 5.5rem 5%; }
 }
 .proj-card:hover{ border-color:rgba(255,61,110,0.4); transform:translateY(-6px); box-shadow:0 20px 50px rgba(0,0,0,0.5); }
 .proj-card img{ width:100%;height:190px;object-fit:cover;display:block; transition:transform 0.5s; }
+
 .proj-card:hover img{ transform:scale(1.04); }
 .proj-body{ padding:1.4rem 1.5rem; }
 .proj-tag-pill{
@@ -538,6 +571,7 @@ footer a:hover{ color:var(--pink); }
   section.pad{padding:4rem 4%;}
   .trusted{padding:3rem 4%;}
 }
+
 </style>
 </head>
 <body>
@@ -750,6 +784,9 @@ footer a:hover{ color:var(--pink); }
     <div class="skill-pill"><img src="blender.png" alt="Blender"/><span>Blender</span></div>
     <div class="skill-pill"><img src="ps.png" alt="Photoshop"/><span>Photoshop</span></div>
     <div class="skill-pill"><img src="c.png" alt="C#"/><span>C#</span></div>
+    <div class="skill-pill"><img src="html.png" alt="Html"/><span>Html</span></div>
+    <div class="skill-pill"><img src="c++.png" alt="C++"/><span>C++</span></div>
+    <div class="skill-pill"><img src="pr.png" alt="Adobe Premier"/><span>AdobePremier</span></div>
   </div>
 </section>
 
@@ -790,35 +827,114 @@ footer a:hover{ color:var(--pink); }
     <h2 class="section-title">Shipped <span class="grad">Titles</span></h2>
     <p class="section-sub">Freelance contributions to games live on the Play Store right now.</p>
   </div>
-  <div class="proj-grid">
-    <a href="https://play.google.com/store/apps/details?id=com.superbear" target="_blank" class="proj-card reveal d1">
+<div class="slider-wrap">
+  <div class="slider proj-slider">
+
+    <!-- CARD 1 -->
+    <a href="https://play.google.com/store/apps/details?id=com.Earthkwak.Platformer" target="_blank" class="proj-card reveal d1">
       <img src="bear.png" alt="Super Bear Adventure"/>
       <div class="proj-body">
         <span class="proj-tag-pill">Platformer · Play Store</span>
         <h3>Super Bear Adventure</h3>
-        <p>3D exploration game inspired by '90s classics. Save the kingdom from the purple honey threat as Baaren.</p>
-        <div class="proj-meta"><div>Role <span>C# Movement</span></div><div>Type <span>Freelance</span></div></div>
+        <p>3D exploration game inspired by '90s classics.</p>
+        <div class="proj-meta">
+          <div>Role <span>C# Movement</span></div>
+          <div>Type <span>Freelance</span></div>
+        </div>
       </div>
     </a>
-    <div class="proj-card reveal d2">
+
+    <!-- CARD 2 -->
+    <a href="https://play.google.com/store/apps/details?id=com.netease.idv.googleplay" target="_blank" class="proj-card reveal d2">
       <img src="Identity.png" alt="Identity V"/>
       <div class="proj-body">
         <span class="proj-tag-pill">Horror · Play Store</span>
         <h3>Identity V</h3>
-        <p>Asymmetric 1v4 mobile horror with gothic visuals, randomized maps, multiple playable characters.</p>
-        <div class="proj-meta"><div>Role <span>C# Movement</span></div><div>Type <span>Freelance</span></div></div>
+        <p>Asymmetric 1v4 mobile horror.</p>
+        <div class="proj-meta">
+          <div>Role <span>C# Inventory system, Animations, Movement</span></div>
+          <div>Type <span>Freelance</span></div>
+        </div>
       </div>
-    </div>
-    <div class="proj-card reveal d3">
+    </a>
+
+    <!-- CARD 3 -->
+    <a href="https://play.google.com/store/apps/details?id=com.darkbluecreations.stickman.gun.battle.simulator" target="_blank" class="proj-card reveal d3">
       <img src="stickman.png" alt="Stickman Battle Simulator"/>
       <div class="proj-body">
         <span class="proj-tag-pill">Strategy · Play Store</span>
         <h3>Stickman Battle Simulator</h3>
-        <p>Command stickman armies with melee, guns, and sci-fi weapons in this free-to-play simulator.</p>
-        <div class="proj-meta"><div>Role <span>C# Movement</span></div><div>Type <span>Freelance</span></div></div>
+        <p>Command stickman armies.</p>
+        <div class="proj-meta">
+          <div>Role <span>C# Movement & Fire System</span></div>
+          <div>Type <span>Freelance</span></div>
+        </div>
       </div>
-    </div>
+    </a>
+
+    <!-- CARD 4 -->
+    <a href="https://play.google.com/store/apps/details?id=flexus.dye.hard" target="_blank" class="proj-card reveal d2">
+      <img src="dyehard.png" alt="Dye Hard"/>
+      <div class="proj-body">
+        <span class="proj-tag-pill">Splash · Play Store</span>
+        <h3>Dye Hard</h3>
+        <p>Splash Shooter, inspired in Splatoon.</p>
+        <div class="proj-meta">
+          <div>Role <span>C# Movement, Splash System, Score System...</span></div>
+          <div>Type <span>Freelance</span></div>
+        </div>
+      </div>
+    </a>
+
+
+    <!-- CARD 5 -->
+    <a href="https://play.google.com/store/apps/details?id=com.pikpok.dr2.play" target="_blank" class="proj-card reveal d2">
+      <img src="into.png" alt="Into the Dead 2"/>
+      <div class="proj-body">
+        <span class="proj-tag-pill">Horror · Play Store</span>
+        <h3>Into the Dead 2</h3>
+        <p>Adventure & horror.</p>
+        <div class="proj-meta">
+          <div>Role <span>C# Attack System</span></div>
+          <div>Type <span>Freelance</span></div>
+        </div>
+      </div>
+    </a>
+
+
+
+    <!-- CARD 6 -->
+    <a href="https://play.google.com/store/apps/details?id=net.froemling.bombsquad" target="_blank" class="proj-card reveal d2">
+      <img src="bombsquad.png" alt="BombSquad"/>
+      <div class="proj-body">
+        <span class="proj-tag-pill">Cooperative Game · Play Store</span>
+        <h3>BombSquad</h3>
+        <p>Cooperative Multimod game.</p>
+        <div class="proj-meta">
+          <div>Role <span>C# Movement & Mode System</span></div>
+          <div>Type <span>Freelance</span></div>
+        </div>
+      </div>
+    </a>
+
+
+    <!-- CARD 7 -->
+    <a href="https://play.google.com/store/apps/details?id=com.wildlife.games.battle.royale.free.zooba" target="_blank" class="proj-card reveal d2">
+      <img src="zooba.png" alt="Zooba"/>
+      <div class="proj-body">
+        <span class="proj-tag-pill">Shooter · Play Store</span>
+        <h3>Zooba</h3>
+        <p>Animal Shooter Online.</p>
+        <div class="proj-meta">
+          <div>Role <span>C# Movement & Shoot System</span></div>
+          <div>Type <span>Freelance</span></div>
+        </div>
+      </div>
+    </a>
+
   </div>
+</div>
+
 </section>
 
 <!-- ═══ PROTOTYPES ══════════════════════════════════════════ -->
@@ -828,7 +944,11 @@ footer a:hover{ color:var(--pink); }
     <h2 class="section-title">Personal <span class="grad">Projects</span></h2>
     <p class="section-sub">Built from scratch — my own game ideas, fully developed.</p>
   </div>
-  <div class="proj-grid">
+
+<div class="slider-wrap">
+  <div class="slider proj-slider">
+
+
     <div class="proj-card reveal d1">
       <img src="goomie.png" alt="Goomie Gum"/>
       <div class="proj-body">
@@ -848,7 +968,15 @@ footer a:hover{ color:var(--pink); }
       </div>
     </div>
     <div class="proj-card reveal d3">
-      <img src="skyland.png" alt="SkyLand"/>
+
+  <iframe 
+    width="100%" 
+    height="190" 
+    src="https://www.youtube.com/watch?v=pG9hNLwEt24"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+
       <div class="proj-body">
         <span class="proj-tag-pill">Platformer · Prototype</span>
         <h3>SkyLand (ToyBox)</h3>
@@ -856,6 +984,25 @@ footer a:hover{ color:var(--pink); }
         <div class="proj-meta"><div>Stack <span>Unity · C#</span></div><div>Type <span>Solo</span></div></div>
       </div>
     </div>
+
+    <div class="proj-card reveal d4">
+
+  <iframe 
+    width="100%" 
+    height="190" 
+    src="https://www.youtube.com/watch?v=wPNwh_VpeSA"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+
+      <div class="proj-body">
+        <span class="proj-tag-pill">Sport · Demo</span>
+        <h3>BaseBall Game</h3>
+        <p>Baseball test mini game</p>
+        <div class="proj-meta"><div>Stack <span>Unity · C#</span></div><div>Type <span>Solo</span></div></div>
+      </div>
+    </div>
+
     <div class="proj-card reveal d4">
       <img src="adventure.png" alt="Strandzha"/>
       <div class="proj-body">
@@ -865,7 +1012,11 @@ footer a:hover{ color:var(--pink); }
         <div class="proj-meta"><div>Stack <span>Unity · C#</span></div><div>Type <span>Solo</span></div></div>
       </div>
     </div>
+
+
   </div>
+</div>
+
 </section>
 
 <!-- ═══ GALLERY ═════════════════════════════════════════════ -->
@@ -1033,4 +1184,5 @@ observerCounter.observe(document.querySelector('.mini-card'));
 </script>
 </body>
 </html>
+
 
